@@ -5,7 +5,6 @@
     --spacing:      1rem;
 }
 
-/* OVERLAY + BLUR */
 .create-group-overlay {
     position: fixed;
     inset: 0;
@@ -17,7 +16,6 @@
     z-index: 999;
 }
 
-/* MODAL CARD */
 .create-group-modal {
     background: var(--color-white);
     border-radius: 0.75rem;
@@ -32,7 +30,6 @@
     color: var(--color-royal);
 }
 
-/* FORM */
 .create-group-modal label {
     display: block;
     margin-bottom: 0.5rem;
@@ -49,7 +46,6 @@
     box-sizing: border-box;
 }
 
-/* BUTTON */
 .btn-filled {
     width: 100%;
     padding: 0.75rem;
@@ -65,7 +61,6 @@
     background: #3658b3;
 }
 
-/* ERROR */
 .error {
     margin-top: 1rem;
     color: red;

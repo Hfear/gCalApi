@@ -10,7 +10,6 @@ export async function loader() {
 export default function Profile() {
     const { name, email } = useLoaderData();
 
-    // derive initials from name, e.g. "John Doe" → "JD"
     const initials = name
         .split(" ")
         .map((word) => word[0])

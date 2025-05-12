@@ -1,11 +1,10 @@
 :root {
-    --color-sky:    #87CEEB;   /* sky blue */
-    --color-royal:  #4169E1;   /* royal blue */
+    --color-sky:    #87CEEB;
+    --color-royal:  #4169E1;
     --color-white:  #ffffff;
     --color-gray:   #555555;
 }
 
-/* PAGE & BLUR */
 .homepage-container {
     min-height: 100vh;
     background-color: var(--color-sky);
@@ -20,7 +19,6 @@
     filter: blur(6px);
 }
 
-/* WELCOME CARD */
 .welcome-card {
     background: var(--color-white);
     border-radius: 1rem;
@@ -40,14 +38,13 @@
     color: var(--color-gray);
 }
 
-/* BUTTON GROUP & BUTTONS */
 .button-group {
     display: flex;
     gap: 1rem;
 }
 .button-primary,
 .button-outline {
-    flex: 1;                      /* both take equal width */
+    flex: 1;
     padding: 0.75rem;
     border-radius: 0.5rem;
     font-weight: 500;

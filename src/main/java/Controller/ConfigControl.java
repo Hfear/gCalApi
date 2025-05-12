@@ -14,7 +14,6 @@ public class ConfigControl {
 
     @GetMapping("/google-client-id")
     public String getGoogleClientId() {
-       // System.out.println("GET /google-client-id called");
         try {
             ClassPathResource resource = new ClassPathResource("credentials.json");
             InputStream inputStream = resource.getInputStream();

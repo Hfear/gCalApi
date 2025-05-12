@@ -1,4 +1,3 @@
-// JoinClassForm.jsx
 import React, { useState } from 'react';
 import './JoinClass.css';
 
@@ -18,8 +17,8 @@ export default function JoinClassModal({ onClose }) {
             const joined = await res.json();
             setMessage(
                 joined
-                    ? 'Joined successfully!'
-                    : 'Could not join or already joined.'
+                    ? 'Joined Successfully!'
+                    : 'Failed to Join .'
             );
         } catch {
             setMessage('Server error.');
@@ -38,6 +37,7 @@ export default function JoinClassModal({ onClose }) {
                         onChange={e => setCode(e.target.value)}
                         required
                     />
+
                     <button type="submit" className="btn-filled">
                         Join
                     </button>

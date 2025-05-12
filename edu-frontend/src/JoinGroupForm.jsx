@@ -1,4 +1,3 @@
-// JoinGroupForm.jsx
 import React, { useState } from 'react';
 import { useParams }    from 'react-router-dom';
 import Loading          from './Loading.jsx';

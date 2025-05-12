@@ -20,7 +20,6 @@ export default function AddEventForm({ onClose, onEventAdded }) {
         setError(null);
         setLoading(true);
 
-        // convert to ISO before sending
         const startISO = new Date(start).toISOString();
         const endISO = new Date(end).toISOString();
 
@@ -42,9 +41,9 @@ export default function AddEventForm({ onClose, onEventAdded }) {
           body: JSON.stringify(eventData)
         }
       );
-      if (!res.ok) throw new Error(await res.text() || 'Failed to add event');
+      if (!res.ok) throw new Error(await res.text() || 'Failed To Add');
          setSuccess(true);
-         alert('Event added successfully!');
+         alert('Event Added!');
          setSummary(''); setStart(''); setEnd(''); setLocation(''); setDescription('');
 
         const newEvt = await res.json();
@@ -54,6 +53,8 @@ export default function AddEventForm({ onClose, onEventAdded }) {
         setLoading(false);
 
         navigate(`/class/${classCode}/group/${groupCode}`);
+
+
     } catch (err) {
       setError(err.message);
     }

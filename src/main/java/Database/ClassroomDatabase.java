@@ -37,7 +37,7 @@ public class ClassroomDatabase {
                         cNode.get("code").asText(),
                         creator
                 );
-                idCounter = Math.max(idCounter, id + 1); // finds highest id +1
+                idCounter = Math.max(idCounter, id + 1);
 
                 //loading userids into array
                 if (cNode.has("studentIds")) {

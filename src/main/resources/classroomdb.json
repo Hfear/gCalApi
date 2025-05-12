@@ -24,12 +24,20 @@
     "studentIds" : [ 8 ],
     "groupCodes" : [ ]
   }, {
+    "id" : 13,
+    "title" : "Best Class",
+    "description" : "",
+    "code" : "F060A1",
+    "createdBy" : "elasmarloay@gmail.com",
+    "studentIds" : [ 7 ],
+    "groupCodes" : [ ]
+  }, {
     "id" : 3,
     "title" : "Calculus I",
     "description" : "Differential Calculus",
     "code" : "MATH101",
     "createdBy" : "unknown@example.com",
-    "studentIds" : [ ],
+    "studentIds" : [ 7 ],
     "groupCodes" : [ ]
   }, {
     "id" : 5,
@@ -64,14 +72,6 @@
     "studentIds" : [ 8 ],
     "groupCodes" : [ ]
   }, {
-    "id" : 13,
-    "title" : "potato",
-    "description" : "",
-    "code" : "C2AA0D",
-    "createdBy" : "elasmarloay@gmail.com",
-    "studentIds" : [ 7 ],
-    "groupCodes" : [ ]
-  }, {
     "id" : 1,
     "title" : "Intro",
     "description" : "CS1",
@@ -101,7 +101,7 @@
     "description" : "Writing Fundamentals",
     "code" : "ENG101",
     "createdBy" : "hannahbfearns@gmail.com",
-    "studentIds" : [ ],
+    "studentIds" : [ 7 ],
     "groupCodes" : [ ]
   } ]
 }

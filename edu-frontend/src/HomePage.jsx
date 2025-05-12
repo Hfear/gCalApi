@@ -1,4 +1,3 @@
-// HomePage.jsx
 import React, { useState } from 'react';
 import JoinClassModal from './JoinClassForm';
 import CreateClassModal from './CreateClassForm';
@@ -40,15 +39,15 @@ export default function HomePage() {
 
     return (
         <>
-            {/* MAIN PAGE */}
+
             <div
                 className={
                     `homepage-container${(showJoinModal || showCreateModal) ? ' blur' : ''}`
                 }
             >
-                {/* Welcome Card */}
+
                 <section className="welcome-card">
-                    {/* eslint-disable-next-line */}
+
                     <h1 className="card-title">Welcome to ED Group</h1>
                     <p className="card-subtext">
                         Organize, join, and collaborate with your class teams easily.
@@ -69,7 +68,7 @@ export default function HomePage() {
                     </div>
                 </section>
 
-                {/* Events Section */}
+
                 <section className="events-section">
                     <h2>Calendar Events</h2>
                     <button onClick={fetchEvents} className="button-small">
@@ -94,7 +93,7 @@ export default function HomePage() {
                 </section>
             </div>
 
-            {/* JOIN & CREATE MODALS */}
+
             {showJoinModal && (
                 <JoinClassModal onClose={() => setShowJoinModal(false)} />
             )}

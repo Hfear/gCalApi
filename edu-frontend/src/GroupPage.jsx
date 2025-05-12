@@ -1,4 +1,3 @@
-// GroupPage.jsx
 import React, { useState, useEffect, useCallback } from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
 import Loading from './Loading.jsx';
@@ -9,7 +8,6 @@ import './GroupPage.css';
 export async function loader({ params }) {
     const { classCode, groupCode } = params;
 
-    // 1) Load group details
     const res = await fetch(
         `/class/${classCode}/groups/${groupCode}/details`,
         { credentials: 'include' }
@@ -17,7 +15,6 @@ export async function loader({ params }) {
     if (!res.ok) throw new Error('Failed to load group details');
     const group = await res.json();
 
-    // 2) Load user profile
     const profileRes = await fetch('/profile', { credentials: 'include' });
     if (!profileRes.ok) throw new Error('Failed to load profile');
     const profile = await profileRes.json();
@@ -41,7 +38,7 @@ export default function GroupPage() {
     const [showAddModal, setShowAddModal]     = useState(false);
     const [showJoinModal, setShowJoinModal]   = useState(false);
 
-    // 1) Fetch upcoming events from the working endpoint
+
     const fetchEvents = useCallback(async () => {
         setLoadingEvents(true);
         setEventsError(null);
@@ -50,25 +47,24 @@ export default function GroupPage() {
                 `/calendar/group/${groupCode}/display`,
                 { credentials: 'include' }
             );
-            if (!res.ok) throw new Error('Calendar fetch failed');
+            if (!res.ok) throw new Error('Failed To Fetch Calender ');
             const data = await res.json();
             setEvents(data || []);
         } catch (err) {
             console.error('Calendar fetch error:', err);
-            setEventsError('Could not load events');
+            setEventsError('error loading events');
         } finally {
             setLoadingEvents(false);
         }
     }, [groupCode]);
 
-    // 2) Fetch the embed‐ID from the working endpoint
     const fetchCalId = useCallback(async () => {
         try {
             const res = await fetch(
                 `/calendar/group/${groupCode}/info`,
                 { credentials: 'include' }
             );
-            if (!res.ok) throw new Error('Failed to load calendar info');
+            if (!res.ok) throw new Error('Failed to load calendar ');
             const data = await res.json();
             setCalendarId(data.calendarId);
         } catch (err) {
@@ -76,25 +72,21 @@ export default function GroupPage() {
         }
     }, [groupCode]);
 
-    // Kick off both on mount
     useEffect(() => {
         fetchEvents();
         fetchCalId();
     }, [fetchEvents, fetchCalId]);
 
-    // When you add an event via the modal
     const handleEventAdded = newEvt => {
         setEvents(es => [newEvt, ...es]);
         setReloadCalKey(k => k + 1);
     };
 
-    // Copy‐invite
     const handleShare = () => {
         navigator.clipboard.writeText(group.code);
         alert('Group code copied!');
     };
 
-    // 3) Use Hfear’s leave‐endpoint
     const handleLeave = async () => {
         try {
             const res = await fetch(
@@ -113,7 +105,6 @@ export default function GroupPage() {
         }
     };
 
-    // After a successful join
     const handleJoined = () => {
         setUserInGroup(true);
         setShowJoinModal(false);
@@ -132,10 +123,8 @@ export default function GroupPage() {
                 </header>
 
                 <div className="group-content">
-                    {/* ── MAIN COLUMN ── */}
                     <div className="group-main">
 
-                        {/* Calendar View */}
                         <div className="panel-card">
                             <div className="panel-header">
                                 <h2 className="section-title">Calendar View</h2>
@@ -154,7 +143,7 @@ export default function GroupPage() {
                             )}
                         </div>
 
-                        {/* Upcoming Events */}
+
                         <div className="panel-card">
                             <div className="panel-header">
                                 <h2 className="section-title">Upcoming Events</h2>
@@ -194,7 +183,7 @@ export default function GroupPage() {
                         </div>
                     </div>
 
-                    {/* ── SIDEBAR ── */}
+
                     <aside className="group-sidebar">
                         <div className="panel-card">
                             <h2 className="section-title">Members</h2>
