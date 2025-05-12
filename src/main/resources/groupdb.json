@@ -22,7 +22,7 @@
     "classCode" : "CS101",
     "createdBy" : "alice@example.com",
     "groupCalId" : "null",
-    "memberIds" : [ 1, 2, 8 ]
+    "memberIds" : [ 1, 2 ]
   }, {
     "id" : 11,
     "title" : "CS101 Project Team",

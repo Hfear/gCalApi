@@ -4,6 +4,7 @@ import Model.Group;
 import Model.User;
 import Service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -43,15 +44,24 @@ public class GroupControl {
     }
 
     @PostMapping("/group/{groupCode}/join")
-    public boolean joinGroup(@PathVariable String groupCode, HttpSession session) {
-        return groupService.joinGroup(groupCode, session);
+    public ResponseEntity<Void> joinGroup(
+            @PathVariable String classCode,
+            @PathVariable String groupCode,
+            HttpSession session
+    ) {
+        boolean success = groupService.joinGroup(classCode, groupCode, session);
+        if (success) {
+            return ResponseEntity.ok().build();
+        } else {
+            // either group not found, wrong class, or already a member
+            return ResponseEntity.badRequest().build();
+        }
     }
 
     @PostMapping("/group/{groupCode}/leave")
     public boolean leaveGroup(@PathVariable String groupCode, HttpSession session) {
         return groupService.leaveGroup(groupCode, session);
     }
-
 
     @GetMapping("/{groupCode}/members")
     public List<User> listMembers(

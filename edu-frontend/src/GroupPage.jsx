@@ -227,9 +227,11 @@ export default function GroupPage() {
                     🤝 Join Group
                   </button>
                 )}
-                <button className="btn-share" onClick={handleShare}>
-                  📋 Copy Code
-                </button>
+                 {userInGroup && (
+                      <button className="btn-share" onClick={handleShare}>
+                        📋 Copy Code
+                      </button>
+                    )}
               </div>
             </div>
           </aside>

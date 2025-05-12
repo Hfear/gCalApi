@@ -7,10 +7,9 @@
     <list default="true" id="5d2decef-94a3-4672-be24-c279407ba90e" name="Changes" comment="Testing set upppppp&#10;need to work on functions">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/edu-frontend/src/GroupPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/edu-frontend/src/GroupPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/classroomdb.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/classroomdb.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/groupcaldb.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/groupcaldb.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/groupdb.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/groupdb.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/userdb.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/userdb.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edu-frontend/src/JoinGroupForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/edu-frontend/src/JoinGroupForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/GroupControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/GroupControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Service/GroupService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Service/GroupService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,32 +74,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.CalController.executor": "Run",
-    "Application.CalendarQuickstart.executor": "Profiler#1",
-    "Gradle.Build gCalApi.executor": "Run",
-    "Gradle.gCalApi [:CalController.main()].executor": "Run",
-    "Gradle.gCalApi [:CalendarQuickstart.main()].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "springReact",
-    "kotlin-language-version-configured": "true",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "ts.external.directory.path": "D:\\IntelliJ IDEA 2024.3.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.CalController.executor&quot;: &quot;Run&quot;,
+    &quot;Application.CalendarQuickstart.executor&quot;: &quot;Profiler#1&quot;,
+    &quot;Gradle.Build gCalApi.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.gCalApi [:CalController.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.gCalApi [:CalendarQuickstart.main()].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;springReact&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\IntelliJ IDEA 2024.3.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\hwatt\IdeaProjects\gCalApi\src\main\resources" />
