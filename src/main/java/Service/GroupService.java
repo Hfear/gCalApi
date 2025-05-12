@@ -53,15 +53,18 @@ public class GroupService {
         return group;
     }
 
-
-    public boolean joinGroup(String groupCode, HttpSession session) {
+    public boolean joinGroup(String classCode, String groupCode, HttpSession session) {
         String userEmail = (String) session.getAttribute("userEmail");
         User user = UserDatabase.getUser(userEmail);
         if (user == null) return false;
 
         Group group = GroupDatabase.getByCode(groupCode);
-        if (group == null) return false;
+        // reject if no group, or group.classCode !== path classCode
+        if (group == null || !group.getClassCode().equalsIgnoreCase(classCode)) {
+            return false;
+        }
 
+        // add
         boolean added = group.addMemberId(user.getUserId());
         if (added) {
             GroupDatabase.persistGroup(group);

@@ -9,11 +9,10 @@ import './GroupPage.css';
 export async function loader({ params }) {
     const { classCode, groupCode } = params;
 
-    // 1) Load group details
-    const res = await fetch(
-        `/class/${classCode}/groups/${groupCode}/details`,
-        { credentials: 'include' }
-    );
+    // 1) Load group details (includes memberNames)
+    const res = await fetch(`/class/${classCode}/groups/${groupCode}/details`, {
+        credentials: 'include'
+    });
     if (!res.ok) throw new Error('Failed to load group details');
     const group = await res.json();
 
@@ -26,9 +25,10 @@ export async function loader({ params }) {
 }
 
 export default function GroupPage() {
-    const { group, profile }        = useLoaderData();
-    const { classCode, groupCode }  = useParams();
+    const { group, profile }       = useLoaderData();
+    const { classCode, groupCode } = useParams();
 
+    // State
     const [userInGroup, setUserInGroup]       = useState(
         profile.email === group.createdBy ||
         group.memberNames.includes(profile.name)
@@ -41,7 +41,7 @@ export default function GroupPage() {
     const [showAddModal, setShowAddModal]     = useState(false);
     const [showJoinModal, setShowJoinModal]   = useState(false);
 
-    // helper to normalize Google DateTime or plain date strings / epoch
+    // Helper to pull out whatever shape Google gives us
     const getRaw = dt => {
         if (!dt) return '';
         if (dt.dateTime != null) {
@@ -59,14 +59,14 @@ export default function GroupPage() {
         return '';
     };
 
+    // Fetch upcoming events
     const fetchEvents = useCallback(async () => {
         setLoading(true);
         setError(null);
         try {
-            const res = await fetch(
-                `/calendar/group/${groupCode}/display`,
-                { credentials: 'include' }
-            );
+            const res = await fetch(`/calendar/group/${groupCode}/display`, {
+                credentials: 'include'
+            });
             if (!res.ok) throw new Error('Failed to load events');
             const data = await res.json();
             setCalendarEvents(data || []);
@@ -78,12 +78,12 @@ export default function GroupPage() {
         }
     }, [groupCode]);
 
+    // Fetch embed calendar ID
     const fetchCalId = useCallback(async () => {
         try {
-            const res = await fetch(
-                `/calendar/group/${groupCode}/info`,
-                { credentials: 'include' }
-            );
+            const res = await fetch(`/calendar/group/${groupCode}/info`, {
+                credentials: 'include'
+            });
             if (!res.ok) throw new Error('Failed to load calendar info');
             const { calendarId } = await res.json();
             setCalendarId(calendarId);
@@ -92,11 +92,13 @@ export default function GroupPage() {
         }
     }, [groupCode]);
 
+    // Initial load
     useEffect(() => {
         fetchEvents();
         fetchCalId();
     }, [fetchEvents, fetchCalId]);
 
+    // Handlers
     const handleEventAdded = newEvt => {
         setCalendarEvents(es => [newEvt, ...es]);
         setReloadCalKey(k => k + 1);
@@ -110,7 +112,7 @@ export default function GroupPage() {
     const handleLeave = async () => {
         try {
             const res = await fetch(
-                `/class/${classCode}/groups/group/${groupCode}/leave`,
+                `/class/${classCode}/groups/${groupCode}/leave`,
                 { method: 'POST', credentials: 'include' }
             );
             if (res.ok) {
@@ -131,6 +133,7 @@ export default function GroupPage() {
         setReloadCalKey(k => k + 1);
     };
 
+    // Render
     return (
         <>
             <div className={`group-page${(showAddModal||showJoinModal)?' blur':''}`}>
@@ -187,10 +190,10 @@ export default function GroupPage() {
                                     {calendarEvents.map(ev => {
                                         const rawStart = getRaw(ev.start);
                                         const rawEnd   = getRaw(ev.end);
-                                        const startDate = new Date(rawStart);
-                                        const endDate   = new Date(rawEnd);
-                                        const startDisplay = isNaN(startDate) ? rawStart : startDate.toLocaleString();
-                                        const endDisplay   = isNaN(endDate)   ? rawEnd   : endDate.toLocaleString();
+                                        const sDate = new Date(rawStart);
+                                        const eDate = new Date(rawEnd);
+                                        const startDisplay = isNaN(sDate) ? rawStart : sDate.toLocaleString();
+                                        const endDisplay   = isNaN(eDate) ? rawEnd   : eDate.toLocaleString();
 
                                         return (
                                             <li key={ev.id} className="event-item">
@@ -241,10 +244,16 @@ export default function GroupPage() {
             </div>
 
             {showAddModal && (
-                <AddEventForm onClose={() => setShowAddModal(false)} onEventAdded={handleEventAdded} />
+                <AddEventForm
+                    onClose={() => setShowAddModal(false)}
+                    onEventAdded={handleEventAdded}
+                />
             )}
             {showJoinModal && (
-                <JoinGroupForm onClose={() => setShowJoinModal(false)} onJoin={handleJoined} />
+                <JoinGroupForm
+                    onClose={() => setShowJoinModal(false)}
+                    onJoin={handleJoined}
+                />
             )}
         </>
     );
