@@ -1,107 +1,40 @@
 {
-  "classrooms" : [ {
-    "id" : 6,
-    "title" : "tectclass2",
-    "description" : "",
-    "code" : "CA2128",
-    "createdBy" : "hannahbfearns@gmail.com",
-    "studentIds" : [ 8 ],
-    "groupCodes" : [ ]
-  }, {
-    "id" : 8,
-    "title" : "wahh",
-    "description" : "",
-    "code" : "091C27",
-    "createdBy" : "hannahbfearns@gmail.com",
-    "studentIds" : [ 8 ],
-    "groupCodes" : [ ]
-  }, {
-    "id" : 9,
-    "title" : "pleasebedone",
-    "description" : "",
-    "code" : "908E47",
-    "createdBy" : "hannahbfearns@gmail.com",
-    "studentIds" : [ 8 ],
-    "groupCodes" : [ ]
-  }, {
-    "id" : 13,
-    "title" : "Best Class",
-    "description" : "",
-    "code" : "F060A1",
-    "createdBy" : "elasmarloay@gmail.com",
-    "studentIds" : [ 7 ],
-    "groupCodes" : [ ]
-  }, {
-    "id" : 3,
-    "title" : "Calculus I",
-    "description" : "Differential Calculus",
-    "code" : "MATH101",
-    "createdBy" : "unknown@example.com",
-    "studentIds" : [ 7 ],
-    "groupCodes" : [ ]
-  }, {
-    "id" : 5,
-    "title" : "testCLASS",
-    "description" : "",
-    "code" : "6695D9",
-    "createdBy" : "hannahbfearns@gmail.com",
-    "studentIds" : [ 8 ],
-    "groupCodes" : [ ]
-  }, {
-    "id" : 11,
-    "title" : "interface",
-    "description" : "",
-    "code" : "30D6A5",
-    "createdBy" : "hannahbfearns@gmail.com",
-    "studentIds" : [ 8 ],
-    "groupCodes" : [ ]
-  }, {
-    "id" : 7,
-    "title" : "testcls3",
-    "description" : "",
-    "code" : "80955F",
-    "createdBy" : "hannahbfearns@gmail.com",
-    "studentIds" : [ 8 ],
-    "groupCodes" : [ ]
-  }, {
-    "id" : 12,
-    "title" : "test i",
-    "description" : "",
-    "code" : "897BA8",
-    "createdBy" : "hannahbfearns@gmail.com",
-    "studentIds" : [ 8 ],
-    "groupCodes" : [ ]
-  }, {
-    "id" : 1,
-    "title" : "Intro",
-    "description" : "CS1",
-    "code" : "CS101",
-    "createdBy" : "bob@example.com",
-    "studentIds" : [ ],
-    "groupCodes" : [ ]
-  }, {
-    "id" : 10,
-    "title" : "help",
-    "description" : "",
-    "code" : "2BDEB2",
-    "createdBy" : "hannahbfearns@gmail.com",
-    "studentIds" : [ 8 ],
-    "groupCodes" : [ ]
-  }, {
-    "id" : 2,
-    "title" : "Physics 1",
-    "description" : "Intro to Physics",
-    "code" : "PHYS101",
-    "createdBy" : "unknown@example.com",
-    "studentIds" : [ ],
-    "groupCodes" : [ ]
-  }, {
-    "id" : 4,
-    "title" : "English Comp",
-    "description" : "Writing Fundamentals",
-    "code" : "ENG101",
-    "createdBy" : "hannahbfearns@gmail.com",
-    "studentIds" : [ 7 ],
-    "groupCodes" : [ ]
-  } ]
+  "classrooms": [
+    {
+      "id": 1,
+      "title": "CS101",
+      "description": "Intro to Computer Science",
+      "code": "CS101",
+      "createdBy": "prof.alice@example.com",
+      "studentIds": [1, 2, 3, 4],
+      "groupCodes": ["GRP_CS1_A", "GRP_CS1_B"]
+    },
+    {
+      "id": 2,
+      "title": "MATH101",
+      "description": "Calculus I",
+      "code": "MATH101",
+      "createdBy": "dr.bob@example.com",
+      "studentIds": [2, 5, 6],
+      "groupCodes": ["GRP_MATH_A", "GRP_MATH_B", "GRP_MATH_C"]
+    },
+    {
+      "id": 3,
+      "title": "PHYS101",
+      "description": "General Physics",
+      "code": "PHYS101",
+      "createdBy": "ta.charlie@example.com",
+      "studentIds": [1, 4, 7, 8],
+      "groupCodes": ["GRP_PHYS_A"]
+    },
+    {
+      "id": 4,
+      "title": "ENG101",
+      "description": "English Literature",
+      "code": "ENG101",
+      "createdBy": "prof.dana@example.com",
+      "studentIds": [3, 5, 7],
+      "groupCodes": []
+    }
+  ]
 }
