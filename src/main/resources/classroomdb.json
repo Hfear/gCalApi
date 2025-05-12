@@ -1,40 +1,43 @@
 {
-  "classrooms": [
-    {
-      "id": 1,
-      "title": "CS101",
-      "description": "Intro to Computer Science",
-      "code": "CS101",
-      "createdBy": "prof.alice@example.com",
-      "studentIds": [1, 2, 3, 4],
-      "groupCodes": ["GRP_CS1_A", "GRP_CS1_B"]
-    },
-    {
-      "id": 2,
-      "title": "MATH101",
-      "description": "Calculus I",
-      "code": "MATH101",
-      "createdBy": "dr.bob@example.com",
-      "studentIds": [2, 5, 6],
-      "groupCodes": ["GRP_MATH_A", "GRP_MATH_B", "GRP_MATH_C"]
-    },
-    {
-      "id": 3,
-      "title": "PHYS101",
-      "description": "General Physics",
-      "code": "PHYS101",
-      "createdBy": "ta.charlie@example.com",
-      "studentIds": [1, 4, 7, 8],
-      "groupCodes": ["GRP_PHYS_A"]
-    },
-    {
-      "id": 4,
-      "title": "ENG101",
-      "description": "English Literature",
-      "code": "ENG101",
-      "createdBy": "prof.dana@example.com",
-      "studentIds": [3, 5, 7],
-      "groupCodes": []
-    }
-  ]
+  "classrooms" : [ {
+    "id" : 1,
+    "title" : "CS101",
+    "description" : "Intro to Computer Science",
+    "code" : "CS101",
+    "createdBy" : "unknown@example.com",
+    "studentIds" : [ 1, 2, 3, 4 ],
+    "groupCodes" : [ "GRP_CS1_A", "GRP_CS1_B" ]
+  }, {
+    "id" : 2,
+    "title" : "MATH101",
+    "description" : "Calculus I",
+    "code" : "MATH101",
+    "createdBy" : "unknown@example.com",
+    "studentIds" : [ 2, 5, 6, 7 ],
+    "groupCodes" : [ "GRP_MATH_A", "GRP_MATH_B", "GRP_MATH_C" ]
+  }, {
+    "id" : 5,
+    "title" : "New Class",
+    "description" : "",
+    "code" : "997A2A",
+    "createdBy" : "elasmarloay@gmail.com",
+    "studentIds" : [ 7 ],
+    "groupCodes" : [ ]
+  }, {
+    "id" : 3,
+    "title" : "PHYS101",
+    "description" : "General Physics",
+    "code" : "PHYS101",
+    "createdBy" : "unknown@example.com",
+    "studentIds" : [ 1, 4, 7, 8 ],
+    "groupCodes" : [ "GRP_PHYS_A" ]
+  }, {
+    "id" : 4,
+    "title" : "ENG101",
+    "description" : "English Literature",
+    "code" : "ENG101",
+    "createdBy" : "unknown@example.com",
+    "studentIds" : [ 3, 5, 7 ],
+    "groupCodes" : [ ]
+  } ]
 }

@@ -8,6 +8,14 @@
     "groupCalId" : "04ccd5c03799165e91254464b956fdca0655eed3944714a6d5fe5e154ce93301@group.calendar.google.com",
     "memberIds" : [ 8 ]
   }, {
+    "id" : 32,
+    "title" : "Algorithms ",
+    "code" : "F48A07",
+    "classCode" : "undefined",
+    "createdBy" : "elasmarloay@gmail.com",
+    "groupCalId" : "6cefcd744eede9e7c95fda1e39b4041b71abb29a47f78f56cfc68c7abf079c8d@group.calendar.google.com",
+    "memberIds" : [ 7 ]
+  }, {
     "id" : 30,
     "title" : "Physics Lab Partners",
     "code" : "GRP_PHYS_A",
@@ -55,5 +63,13 @@
     "createdBy" : "alice@example.com",
     "groupCalId" : "null",
     "memberIds" : [ 2, 6 ]
+  }, {
+    "id" : 33,
+    "title" : "TheOne",
+    "code" : "11781F",
+    "classCode" : "undefined",
+    "createdBy" : "elasmarloay@gmail.com",
+    "groupCalId" : "844e8170753563b8cc4a436f621a53631c6ac347e96aa2b88184f9b9ebff491f@group.calendar.google.com",
+    "memberIds" : [ 7 ]
   } ]
 }
