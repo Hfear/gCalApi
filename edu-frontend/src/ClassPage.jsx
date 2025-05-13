@@ -12,7 +12,7 @@ export async function loader({ params }) {
 
     const { code } = params;
 
-    // 1) fetch student IDs
+    //  fetch student IDs
     const idsRes = await fetch('/class/student-ids', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -22,7 +22,7 @@ export async function loader({ params }) {
     if (!idsRes.ok) throw new Error('Failed to load student IDs');
     const ids = await idsRes.json();
 
-    // 2) fetch each student
+    //  fetch student
     const students = await Promise.all(
         ids.map(id =>
             fetch(`/user/${id}`, { credentials: 'include' }).then(res => {
@@ -32,7 +32,7 @@ export async function loader({ params }) {
         )
     );
 
-    // 3) fetch class + groups
+    // fetch class + groups
     const [classRes, groupsRes] = await Promise.all([
         fetch(`/class/${code}`,                   { credentials: 'include' }),
         fetch(`/class/${code}/groups/listgroups`, { credentials: 'include' })
@@ -54,7 +54,6 @@ export default function ClassPage() {
     return (
         <>
             <div className={`class-page${showCreateModal ? ' blur' : ''}`}>
-                {/* HEADER */}
                 <header className="class-header">
                     <h1 className="class-title">{classroom.title}</h1>
                     <div className="class-code-row">
@@ -71,7 +70,6 @@ export default function ClassPage() {
                     </div>
                 </header>
 
-                {/* CREATE GROUP BUTTON */}
                 <div className="class-actions">
                     <button
                         className="btn-create-group"
@@ -81,11 +79,9 @@ export default function ClassPage() {
                     </button>
                 </div>
 
-                {/* GROUPS HEADING */}
                 <h2 className="groups-title">Groups:</h2>
 
                 <main className="class-content">
-                    {/* GROUPS PANEL */}
                     <section className="groups-panel">
                         {groups.length > 0 ? (
                             <ul className="groups-list">
@@ -104,7 +100,6 @@ export default function ClassPage() {
                         )}
                     </section>
 
-                    {/* STUDENTS PANEL */}
                     <aside className="students-panel">
                         <h2 className="panel-title">Students</h2>
                         {students.length > 0 ? (
@@ -120,7 +115,6 @@ export default function ClassPage() {
                 </main>
             </div>
 
-            {/* CREATE GROUP MODAL */}
             {showCreateModal && (
                 <CreateGroupForm onClose={() => setShowCreateModal(false)} />
             )}

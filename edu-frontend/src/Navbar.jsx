@@ -33,11 +33,7 @@ export default function Navbar() {
                                     My Groups  |
                                 </Link>
                             </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/link">
-                                    Link  |
-                                </Link>
-                            </li>
+
                         </ul>
 
                         <ul className="navbar-nav ms-auto">

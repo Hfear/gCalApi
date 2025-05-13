@@ -3,10 +3,10 @@
     "id" : 31,
     "title" : "Hannahs Group",
     "code" : "5C1BD1",
-    "classCode" : "undefined",
+    "classCode" : "PHYS101",
     "createdBy" : "hannahbfearns@gmail.com",
     "groupCalId" : "04ccd5c03799165e91254464b956fdca0655eed3944714a6d5fe5e154ce93301@group.calendar.google.com",
-    "memberIds" : [ 8 ]
+    "memberIds" : [ 8, 7 ]
   }, {
     "id" : 32,
     "title" : "Algorithms ",
@@ -21,8 +21,8 @@
     "code" : "GRP_PHYS_A",
     "classCode" : "PHYS101",
     "createdBy" : "charlie@example.com",
-    "groupCalId" : "null",
-    "memberIds" : [ 1, 8 ]
+    "groupCalId" : "04ccd5c03799165e91254464b956fdca0655eed3944714a6d5fe5e154ce93301@group.calendar.google.com",
+    "memberIds" : [ 1, 8, 7 ]
   }, {
     "id" : 10,
     "title" : "Algorithms Study Group",

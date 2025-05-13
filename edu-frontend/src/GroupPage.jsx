@@ -1,4 +1,3 @@
-// GroupPage.jsx
 import React, { useState, useEffect, useCallback } from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
 import Loading from './Loading.jsx';
@@ -11,7 +10,7 @@ export async function loader({ params }) {
     await authCheck();
     const { classCode, groupCode } = params;
 
-    // 1) Load group details
+    // load group details
     const res = await fetch(
         `/class/${classCode}/groups/${groupCode}/details`,
         { credentials: 'include' }
@@ -19,7 +18,7 @@ export async function loader({ params }) {
     if (!res.ok) throw new Error('Failed to load group details');
     const group = await res.json();
 
-    // 2) Load user profile
+    // load user profile
     const profileRes = await fetch('/profile', { credentials: 'include' });
     if (!profileRes.ok) throw new Error('Failed to load profile');
     const profile = await profileRes.json();
@@ -31,7 +30,6 @@ export default function GroupPage() {
     const { group, profile }       = useLoaderData();
     const { classCode, groupCode } = useParams();
 
-    // State
     const [userInGroup, setUserInGroup]     = useState(
         profile.email === group.createdBy ||
         group.memberNames.includes(profile.name)
@@ -44,7 +42,6 @@ export default function GroupPage() {
     const [showAddModal, setShowAddModal]     = useState(false);
     const [showJoinModal, setShowJoinModal]   = useState(false);
 
-    // Helpers
     const getRaw = dt => {
         if (!dt) return '';
         if (dt.dateTime != null) {
@@ -60,7 +57,7 @@ export default function GroupPage() {
         return '';
     };
 
-    // Fetch events list
+    // fetch events list
     const fetchEvents = useCallback(async () => {
         setLoading(true);
         setError(null);
@@ -80,7 +77,7 @@ export default function GroupPage() {
         }
     }, [groupCode]);
 
-    // Fetch calendar ID
+    // fetch calendar ID
     const fetchCalId = useCallback(async () => {
         try {
             const res = await fetch(
@@ -95,7 +92,7 @@ export default function GroupPage() {
         }
     }, [groupCode]);
 
-    // Initial load
+    // initial load
     useEffect(() => {
         fetchEvents();
         fetchCalId();
@@ -140,7 +137,6 @@ export default function GroupPage() {
     return (
         <>
             <div className={`group-page${(showAddModal || showJoinModal) ? ' blur' : ''}`}>
-                {/* Header */}
                 <header className="group-header">
                     <h1 className="group-title">{group.title}</h1>
                     <p className="group-subtitle">
@@ -149,9 +145,7 @@ export default function GroupPage() {
                 </header>
 
                 <div className="group-content">
-                    {/* Main Column */}
                     <div className="group-main">
-                        {/* Calendar View */}
                         <div className="panel-card">
                             <div className="panel-header">
                                 <h2 className="section-title">Calendar View</h2>
@@ -170,7 +164,6 @@ export default function GroupPage() {
                             )}
                         </div>
 
-                        {/* Upcoming Events */}
                         <div className="panel-card">
                             <div className="panel-header">
                                 <h2 className="section-title">Upcoming Events</h2>
@@ -223,7 +216,6 @@ export default function GroupPage() {
                         </div>
                     </div>
 
-                    {/* Sidebar */}
                     <aside className="group-sidebar">
                         <div className="panel-card">
                             <h2 className="section-title">Members</h2>
@@ -254,7 +246,6 @@ export default function GroupPage() {
                 </div>
             </div>
 
-            {/* Modals */}
             {showAddModal && (
                 <AddEventForm
                     onClose={() => setShowAddModal(false)}
