@@ -126,4 +126,25 @@ public class GroupService {
                 .filter(g -> g.getMemberIds().contains(userId))
                 .collect(Collectors.toList());
     }
+
+    // only deletes if owner and belongs to class
+    public boolean deleteGroup(String classCode, String groupCode, HttpSession session) {
+        //  Must be logged in
+        String userEmail = (String) session.getAttribute("userEmail");
+        if (userEmail == null) {
+            return false;
+        }
+
+        //  find the group and match classCode + creator
+        Group group = GroupDatabase.getByCode(groupCode);
+        if (group == null
+                || !group.getClassCode().equalsIgnoreCase(classCode)
+                || !group.getCreatedBy().equalsIgnoreCase(userEmail)
+        ) {
+            return false;
+        }
+
+        return GroupDatabase.removeGroup(groupCode);
+    }
+
 }

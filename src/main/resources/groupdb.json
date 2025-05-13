@@ -1,5 +1,13 @@
 {
   "groups" : [ {
+    "id" : 2020,
+    "title" : "test delete",
+    "code" : "C7B7E5",
+    "classCode" : "undefined",
+    "createdBy" : "hannahbfearns@gmail.com",
+    "groupCalId" : "57abebb588f8f9133e6e89b4f628b67d9cc69ae4d9b6fbf0092e0dc4f7f229c9@group.calendar.google.com",
+    "memberIds" : [ 8 ]
+  }, {
     "id" : 31,
     "title" : "Hannahs Group",
     "code" : "5C1BD1",
@@ -39,6 +47,14 @@
     "createdBy" : "eve@example.com",
     "groupCalId" : "null",
     "memberIds" : [ 2, 5 ]
+  }, {
+    "id" : 2019,
+    "title" : "Equationss",
+    "code" : "C7FC77",
+    "classCode" : "CS101",
+    "createdBy" : "elasmarloay@gmail.com",
+    "groupCalId" : "e29df167b15dee6756cbd73a83bb55fa67f35935f668d73afcaaac5856d6f500@group.calendar.google.com",
+    "memberIds" : [ 7, 8 ]
   }, {
     "id" : 21,
     "title" : "Limits & Derivatives",

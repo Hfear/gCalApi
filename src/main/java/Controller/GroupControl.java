@@ -6,6 +6,9 @@ import Service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
+
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -80,6 +83,21 @@ public class GroupControl {
     ) {
         return groupService.getGroupDetails(groupCode);
     }
+
+    @DeleteMapping("/group/{groupCode}")
+    public ResponseEntity<Void> deleteGroup(
+            @PathVariable String classCode,
+            @PathVariable String groupCode,
+            HttpSession session
+    ) {
+        boolean ok = groupService.deleteGroup(classCode, groupCode, session);
+        if (ok) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+        }
+    }
+
 
 
 

@@ -76,6 +76,15 @@ public class GroupDatabase {
         persistGroup(group);
     }
 
+    public static boolean removeGroup(String code) {
+        Group removed = groupMap.remove(code);
+        if (removed != null) {
+            persistGroup(removed);
+            return true;
+        }
+        return false;
+    }
+
     public static Collection<Group> getAllGroups() {
         return groupMap.values();
     }

@@ -5,19 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d2decef-94a3-4672-be24-c279407ba90e" name="Changes" comment="Testing set upppppp&#10;need to work on functions">
-      <change afterPath="$PROJECT_DIR$/edu-frontend/src/authCheck.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/edu-frontend/src/ClassPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/edu-frontend/src/ClassPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/edu-frontend/src/CreateClassForm.css" beforeDir="false" afterPath="$PROJECT_DIR$/edu-frontend/src/CreateClassForm.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/edu-frontend/src/CreateGroupForm.css" beforeDir="false" afterPath="$PROJECT_DIR$/edu-frontend/src/CreateGroupForm.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/edu-frontend/src/GroupPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/edu-frontend/src/GroupPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/edu-frontend/src/JoinGroupForm.css" beforeDir="false" afterPath="$PROJECT_DIR$/edu-frontend/src/JoinGroupForm.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/edu-frontend/src/MyClasses.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/edu-frontend/src/MyClasses.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/edu-frontend/src/MyGroups.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/edu-frontend/src/MyGroups.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/edu-frontend/src/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/edu-frontend/src/Profile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/edu-frontend/src/ProtectedRoute.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/edu-frontend/src/ProtectedRoute.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/edu-frontend/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/edu-frontend/vite.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AuthControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AuthControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/GroupControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/GroupControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Database/GroupDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Database/GroupDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Service/GroupService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Service/GroupService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/classroomdb.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/classroomdb.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/groupcaldb.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/groupcaldb.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/groupdb.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/groupdb.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/userdb.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/userdb.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

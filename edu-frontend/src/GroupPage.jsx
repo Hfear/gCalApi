@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { useLoaderData, useParams } from 'react-router-dom';
+import { useLoaderData, useParams, useNavigate } from 'react-router-dom';
 import Loading from './Loading.jsx';
 import AddEventForm from './AddEventForm.jsx';
 import JoinGroupForm from './JoinGroupForm.jsx';
@@ -27,7 +27,9 @@ export async function loader({ params }) {
 
 export default function GroupPage() {
   const { group, profile } = useLoaderData();
+  const isOwner = profile.email === group.createdBy;
   const { classCode, groupCode } = useParams();
+  const navigate = useNavigate();
 
   const [userInGroup, setUserInGroup] = useState(
     profile.email === group.createdBy ||
@@ -109,6 +111,22 @@ export default function GroupPage() {
     setShowJoinModal(false);
     fetchEvents();
     setReloadCalKey(k => k + 1);
+  };
+
+// fix delete logic
+  const handleDelete = async () => {
+      if (!window.confirm('Really delete this group? This cannot be undone.')) return;
+
+      try {
+        const res = await fetch(
+        `/class/${classCode}/groups/group/${groupCode}`,
+        );
+        if (!res.ok) throw new Error('Delete failed');
+        navigate(`/class/${classCode}`, { replace: true });
+      } catch (err) {
+        alert('Could not delete group.');
+        console.error(err);
+     }
   };
 
   // helper to normalize date
@@ -233,6 +251,11 @@ export default function GroupPage() {
                       <button className="btn-share" onClick={handleShare}>
                         📋 Copy Code
                       </button>
+                    )}
+                    {isOwner && (
+                        <button className="btn-danger" onClick={handleDelete}>
+                            🗑️ Delete Group
+                         </button>
                     )}
               </div>
             </div>
