@@ -1,4 +1,3 @@
-// GroupPage.jsx
 import React, { useState, useEffect, useCallback } from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
 import Loading from './Loading.jsx';
@@ -9,14 +8,13 @@ import './GroupPage.css';
 export async function loader({ params }) {
     const { classCode, groupCode } = params;
 
-    // 1) Load group details (includes memberNames)
-    const res = await fetch(`/class/${classCode}/groups/${groupCode}/details`, {
-        credentials: 'include'
-    });
+    const res = await fetch(
+        `/class/${classCode}/groups/${groupCode}/details`,
+        { credentials: 'include' }
+    );
     if (!res.ok) throw new Error('Failed to load group details');
     const group = await res.json();
 
-    // 2) Load user profile
     const profileRes = await fetch('/profile', { credentials: 'include' });
     if (!profileRes.ok) throw new Error('Failed to load profile');
     const profile = await profileRes.json();
@@ -28,91 +26,70 @@ export default function GroupPage() {
     const { group, profile }       = useLoaderData();
     const { classCode, groupCode } = useParams();
 
-    // State
-    const [userInGroup, setUserInGroup]       = useState(
+    const [userInGroup, setUserInGroup]     = useState(
         profile.email === group.createdBy ||
         group.memberNames.includes(profile.name)
     );
-    const [calendarEvents, setCalendarEvents] = useState([]);
-    const [loading, setLoading]               = useState(true);
-    const [error, setError]                   = useState(null);
-    const [calendarId, setCalendarId]         = useState(null);
-    const [reloadCalKey, setReloadCalKey]     = useState(0);
-    const [showAddModal, setShowAddModal]     = useState(false);
-    const [showJoinModal, setShowJoinModal]   = useState(false);
+    const [events, setEvents]               = useState([]);
+    const [loadingEvents, setLoadingEvents] = useState(true);
+    const [eventsError, setEventsError]     = useState(null);
+    const [calendarId, setCalendarId]       = useState(null);
+    const [reloadCalKey, setReloadCalKey]   = useState(0);
+    const [showAddModal, setShowAddModal]   = useState(false);
+    const [showJoinModal, setShowJoinModal] = useState(false);
 
-    // Helper to pull out whatever shape Google gives us
-    const getRaw = dt => {
-        if (!dt) return '';
-        if (dt.dateTime != null) {
-            if (typeof dt.dateTime === 'object' && 'value' in dt.dateTime) {
-                return dt.dateTime.value;
-            }
-            return dt.dateTime;
-        }
-        if (dt.date != null) {
-            if (typeof dt.date === 'object' && 'value' in dt.date) {
-                return dt.date.value;
-            }
-            return dt.date;
-        }
-        return '';
-    };
-
-    // Fetch upcoming events
     const fetchEvents = useCallback(async () => {
-        setLoading(true);
-        setError(null);
+        setLoadingEvents(true);
+        setEventsError(null);
         try {
-            const res = await fetch(`/calendar/group/${groupCode}/display`, {
-                credentials: 'include'
-            });
-            if (!res.ok) throw new Error('Failed to load events');
+            const res = await fetch(
+                `/calendar/group/${groupCode}/display`,
+                { credentials: 'include' }
+            );
+            if (!res.ok) throw new Error('Failed to fetch calendar');
             const data = await res.json();
-            setCalendarEvents(data || []);
+            setEvents(data || []);
         } catch (err) {
             console.error('Calendar fetch error:', err);
-            setError('Could not load events');
+            setEventsError('Error loading events');
         } finally {
-            setLoading(false);
+            setLoadingEvents(false);
         }
     }, [groupCode]);
 
-    // Fetch embed calendar ID
     const fetchCalId = useCallback(async () => {
         try {
-            const res = await fetch(`/calendar/group/${groupCode}/info`, {
-                credentials: 'include'
-            });
-            if (!res.ok) throw new Error('Failed to load calendar info');
-            const { calendarId } = await res.json();
-            setCalendarId(calendarId);
+            const res = await fetch(
+                `/calendar/group/${groupCode}/info`,
+                { credentials: 'include' }
+            );
+            if (!res.ok) throw new Error('Failed to load calendar ID');
+            const data = await res.json();
+            setCalendarId(data.calendarId);
         } catch (err) {
             console.error('Failed to load calendar ID:', err);
         }
     }, [groupCode]);
 
-    // Initial load
     useEffect(() => {
         fetchEvents();
         fetchCalId();
     }, [fetchEvents, fetchCalId]);
 
-    // Handlers
-    const handleEventAdded = newEvt => {
-        setCalendarEvents(es => [newEvt, ...es]);
-        setReloadCalKey(k => k + 1);
+    const handleEventAdded = (newEvt) => {
+        setEvents((es) => [newEvt, ...es]);
+        setReloadCalKey((k) => k + 1);
     };
 
     const handleShare = () => {
         navigator.clipboard.writeText(group.code);
-        alert('Copied group code!');
+        alert('Group code copied!');
     };
 
     const handleLeave = async () => {
         try {
             const res = await fetch(
-                `/class/${classCode}/groups/${groupCode}/leave`,
+                `/class/${classCode}/groups/group/${groupCode}/leave`,
                 { method: 'POST', credentials: 'include' }
             );
             if (res.ok) {
@@ -121,8 +98,9 @@ export default function GroupPage() {
             } else {
                 alert('Failed to leave group.');
             }
-        } catch {
-            alert('Error leaving group.');
+        } catch (err) {
+            console.error('Leave group error:', err);
+            alert('An error occurred.');
         }
     };
 
@@ -130,13 +108,14 @@ export default function GroupPage() {
         setUserInGroup(true);
         setShowJoinModal(false);
         fetchEvents();
-        setReloadCalKey(k => k + 1);
+        setReloadCalKey((k) => k + 1);
     };
 
-    // Render
     return (
         <>
-            <div className={`group-page${(showAddModal||showJoinModal)?' blur':''}`}>
+            <div
+                className={`group-page${(showAddModal || showJoinModal) ? ' blur' : ''}`}
+            >
                 <header className="group-header">
                     <h1 className="group-title">{group.title}</h1>
                     <p className="group-subtitle">
@@ -145,10 +124,8 @@ export default function GroupPage() {
                 </header>
 
                 <div className="group-content">
-                    {/* ── MAIN COLUMN ── */}
                     <div className="group-main">
 
-                        {/* Calendar View */}
                         <div className="panel-card">
                             <div className="panel-header">
                                 <h2 className="section-title">Calendar View</h2>
@@ -167,7 +144,6 @@ export default function GroupPage() {
                             )}
                         </div>
 
-                        {/* Upcoming Events */}
                         <div className="panel-card">
                             <div className="panel-header">
                                 <h2 className="section-title">Upcoming Events</h2>
@@ -180,27 +156,23 @@ export default function GroupPage() {
                                     </button>
                                 )}
                             </div>
-
-                            {loading ? (
+                            {loadingEvents ? (
                                 <Loading message="Loading events…" />
-                            ) : error ? (
-                                <p className="error">{error}</p>
-                            ) : calendarEvents.length > 0 ? (
+                            ) : eventsError ? (
+                                <p className="error">{eventsError}</p>
+                            ) : events.length === 0 ? (
+                                <p>No upcoming events.</p>
+                            ) : (
                                 <ul className="events-list">
-                                    {calendarEvents.map(ev => {
-                                        const rawStart = getRaw(ev.start);
-                                        const rawEnd   = getRaw(ev.end);
-                                        const sDate = new Date(rawStart);
-                                        const eDate = new Date(rawEnd);
-                                        const startDisplay = isNaN(sDate) ? rawStart : sDate.toLocaleString();
-                                        const endDisplay   = isNaN(eDate) ? rawEnd   : eDate.toLocaleString();
-
+                                    {events.map((ev) => {
+                                        const rs = ev.start?.dateTime || ev.start?.date || '';
+                                        const re = ev.end?.dateTime   || ev.end?.date   || '';
                                         return (
-                                            <li key={ev.id} className="event-item">
+                                            <li key={ev.id || ev.summary + rs} className="event-item">
                                                 <strong>{ev.summary}</strong>
                                                 <div className="event-times">
-                                                    Starts: {startDisplay}<br/>
-                                                    Ends:   {endDisplay}
+                                                    Start: {new Date(rs).toLocaleString()}<br />
+                                                    End: {new Date(re).toLocaleString()}
                                                 </div>
                                                 {ev.location && (
                                                     <div className="event-location">{ev.location}</div>
@@ -209,20 +181,15 @@ export default function GroupPage() {
                                         );
                                     })}
                                 </ul>
-                            ) : (
-                                <p>No upcoming events.</p>
                             )}
                         </div>
                     </div>
 
-                    {/* ── SIDEBAR ── */}
                     <aside className="group-sidebar">
                         <div className="panel-card">
                             <h2 className="section-title">Members</h2>
                             <ul className="members-list">
-                                {group.memberNames.map((n,i) => (
-                                    <li key={i}>{n}</li>
-                                ))}
+                                {group.memberNames.map((n, i) => <li key={i}>{n}</li>)}
                             </ul>
                             <div className="sidebar-actions">
                                 {userInGroup ? (
@@ -230,7 +197,10 @@ export default function GroupPage() {
                                         🚪 Leave Group
                                     </button>
                                 ) : (
-                                    <button className="btn-join" onClick={() => setShowJoinModal(true)}>
+                                    <button
+                                        className="btn-join"
+                                        onClick={() => setShowJoinModal(true)}
+                                    >
                                         🤝 Join Group
                                     </button>
                                 )}
@@ -249,6 +219,7 @@ export default function GroupPage() {
                     onEventAdded={handleEventAdded}
                 />
             )}
+
             {showJoinModal && (
                 <JoinGroupForm
                     onClose={() => setShowJoinModal(false)}

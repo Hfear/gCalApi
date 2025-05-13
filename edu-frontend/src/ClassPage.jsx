@@ -61,15 +61,22 @@ export default function ClassPage() {
                 <main className="class-content">
                     <section className="groups-panel">
                         <h2 className="groups-title">Groups:</h2>
-                        <ul className="groups-list">
-                            {groups.map(g => (
-                                <GroupView
-                                    key={g.code}
-                                    singleGroup={g}
-                                    classCode={classroom.code}
-                                />
-                            ))}
-                        </ul>
+
+                        {groups.length > 0 ? (
+                            <ul className="groups-list">
+                                {groups.map(g => (
+                                    <GroupView
+                                        key={g.code}
+                                        singleGroup={g}
+                                        classCode={classroom.code}
+                                    />
+                                ))}
+                            </ul>
+                        ) : (
+                            <p style={{ padding: '1rem', color: 'var(--color-gray)' }}>
+                                No groups have been created yet...
+                            </p>
+                        )}
                     </section>
 
                     <aside className="students-panel">

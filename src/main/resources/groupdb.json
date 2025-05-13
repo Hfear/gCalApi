@@ -22,7 +22,7 @@
     "classCode" : "PHYS101",
     "createdBy" : "charlie@example.com",
     "groupCalId" : "null",
-    "memberIds" : [ 1, 7, 8 ]
+    "memberIds" : [ 1, 8 ]
   }, {
     "id" : 10,
     "title" : "Algorithms Study Group",
