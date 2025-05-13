@@ -6,12 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5d2decef-94a3-4672-be24-c279407ba90e" name="Changes" comment="Testing set upppppp&#10;need to work on functions">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/edu-frontend/src/ClassPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/edu-frontend/src/ClassPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/edu-frontend/src/GroupPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/edu-frontend/src/GroupPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/edu-frontend/src/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/edu-frontend/src/Navbar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Database/GroupCalDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Database/GroupCalDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/groupcaldb.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/groupcaldb.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/groupdb.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/groupdb.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +64,7 @@
   &quot;associatedIndex&quot;: 1
 }</component>
   <component name="ProjectId" id="2uV5DfqFE7tuhBHsamS0WxoYMX5" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+  <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
