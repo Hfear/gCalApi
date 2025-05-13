@@ -1,0 +1,137 @@
+:root {
+    --color-sky:     #87CEEB;
+    --color-royal:   #4169E1;
+    --color-white:   #ffffff;
+    --color-gray:    #555555;
+    --color-text:    #333333;
+    --spacing:       1rem;
+}
+
+.class-page {
+    background: var(--color-sky);
+    min-height: 100vh;
+    padding: var(--spacing);
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.class-header {
+    background: var(--color-royal);
+    color: var(--color-white);
+    border-radius: 0.5rem;
+    padding: calc(var(--spacing) * 1.5);
+    text-align: center;
+    margin-bottom: var(--spacing);
+}
+.class-title {
+    margin: 0 0 0.5rem;
+}
+.class-code-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.copy-btn {
+    background: transparent;
+    border: none;
+    color: var(--color-white);
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.class-actions {
+    text-align: right;
+    margin-bottom: var(--spacing);
+}
+.btn-create-group {
+    background: var(--color-royal);
+    color: var(--color-white);
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.groups-title {
+    margin: 0 0 var(--spacing) var(--spacing);
+    color: var(--color-royal);
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.class-content {
+    display: flex;
+    gap: var(--spacing);
+}
+
+.groups-panel {
+    flex: 2;
+    background: var(--color-white);
+    border-radius: 0.75rem;
+    padding: var(--spacing);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.groups-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.students-panel {
+    flex: 1;
+    background: var(--color-white);
+    border-radius: 0.75rem;
+    padding: var(--spacing);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.panel-title {
+    margin-top: 0;
+    color: var(--color-royal);
+}
+.students-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.students-list li {
+    padding: 0.4rem 0;
+    color: var(--color-text);
+}
+
+.blur {
+    filter: blur(6px);
+}
+
+.btn-join-group {
+    background: var(--color-royal);
+    color:      var(--color-white);
+    border:     none;
+    padding:    0.6rem 1.2rem;
+    border-radius: 0.5rem;
+    cursor:     pointer;
+    font-weight: 500;
+    margin-left: 0.5rem;
+}
+
+.btn-join-group:hover {
+    background: #3658b3;
+}
+
+.students-list li {
+    position: relative;
+    padding-left: 1.2rem;
+    color: var(--color-text);
+}
+
+.students-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0.5rem;
+    height: 0.5rem;
+    background: var(--color-royal);
+    border-radius: 50%;
+}

@@ -1,0 +1,71 @@
+:root {
+    --color-sky:    #87CEEB;
+    --color-royal:  #4169E1;
+    --color-gray:   #555;
+}
+
+.profile-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-sky);
+    padding: 1rem;
+}
+
+.profile-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    max-width: 360px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background: var(--color-royal);
+    color: white;
+    font-size: 2rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-name {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    color: var(--color-royal);
+}
+
+.profile-email {
+    margin: 0.25rem 0 1.5rem;
+    color: var(--color-gray);
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 0.6rem 1rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin-bottom: 0.75rem;
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--color-royal);
+    border: 2px solid var(--color-royal);
+}
+
+.btn-filled {
+    background: var(--color-royal);
+    color: white;
+    border: none;
+}

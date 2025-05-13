@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UncheckedIOException;
 import java.util.List;
+import java.util.UUID;
+import java.util.Collection;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
@@ -24,20 +26,32 @@ public class GroupDatabase {
             JsonNode arr = mapper.readTree(in).get("groups");
 
             for (JsonNode n : arr) {
-                Group g = new Group(
-                        n.get("id").asLong(),
-                        n.get("title").asText(),
-                        n.get("code").asText(),
-                        n.get("classCode").asText(),
-                        n.get("createdBy").asText()
-                );
-                if (n.has("memberEmails")) {
-                    for (JsonNode emailNode : n.get("memberEmails")) {
-                        g.addMemberEmail(emailNode.asText());
+                try {
+                    // in a normal database this would be where the NOT NULL constraints and field enforcements
+                    long id = n.has("id") ? n.get("id").asLong() : -1;
+                    String title = n.has("title") ? n.get("title").asText() : "(Untitled)";
+                    String code = n.has("code") ? n.get("code").asText() : UUID.randomUUID().toString().substring(0, 6).toUpperCase();
+                    String classCode = n.has("classCode") ? n.get("classCode").asText() : "UNKNOWN";
+                    String createdBy = n.has("createdBy") ? n.get("createdBy").asText() : "unknown@example.com";
+
+                    Group g = new Group(id, title, code, classCode, createdBy);
+
+                    // group members
+                    if (n.has("memberIds") && n.get("memberIds").isArray()) {
+                        for (JsonNode m : n.get("memberIds")) {
+                            g.addMemberId(m.asInt());
+                        }
                     }
+                    if (n.has("groupCalId")) {
+                        g.setGroupCalId(n.get("groupCalId").asText());
+                    }
+
+                    groupMap.put(g.getCode(), g);
+                    idIndex = Math.max(idIndex, g.getId() + 1);
+                } catch (Exception e) {
+                    System.err.println("Failed to load group entry: " + n);
+                    e.printStackTrace();
                 }
-                groupMap.put(g.getCode(), g);
-                idIndex = Math.max(idIndex, g.getId() + 1);
             }
         } catch (IOException e) {
             throw new UncheckedIOException("Failed to load groupdb.json", e);
@@ -62,10 +76,15 @@ public class GroupDatabase {
         persistGroup(group);
     }
 
+    public static Collection<Group> getAllGroups() {
+        return groupMap.values();
+    }
+
+
     public static void persistGroup(Group g) {
         ObjectMapper mapper = new ObjectMapper();
         ObjectNode root = mapper.createObjectNode();
-        ArrayNode arr = mapper.createArrayNode();
+        ArrayNode arr  = mapper.createArrayNode();
 
         for (Group group : groupMap.values()) {
             ObjectNode gNode = mapper.createObjectNode();
@@ -74,12 +93,14 @@ public class GroupDatabase {
             gNode.put("code", group.getCode());
             gNode.put("classCode", group.getClassCode());
             gNode.put("createdBy", group.getCreatedBy());
+            gNode.put("groupCalId", group.getGroupCalId());
 
-            ArrayNode members = mapper.createArrayNode();
-            for (String email : group.getMemberEmails()) {
-                members.add(email);
+            // write out memberIds
+            ArrayNode mems = mapper.createArrayNode();
+            for (Integer uid : group.getMemberIds()) {
+                mems.add(uid);
             }
-            gNode.set("memberEmails", members);
+            gNode.set("memberIds", mems);
             arr.add(gNode);
         }
         root.set("groups", arr);
@@ -91,4 +112,5 @@ public class GroupDatabase {
             e.printStackTrace();
         }
     }
+
 }

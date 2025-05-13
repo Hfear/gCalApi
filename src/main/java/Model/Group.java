@@ -11,7 +11,9 @@ public class Group {
     private String code;
     private String classCode;    // the Classroom.code this group belongs to
     private String createdBy;    // email of the creator
-    private List<String> memberEmails = new ArrayList<>();
+    // group cal object id
+    private String groupCalId;
+    private List<Integer> memberIds = new ArrayList<>();
 
     public Group() {
     }
@@ -24,63 +26,58 @@ public class Group {
         this.createdBy = createdBy;
     }
 
+    //when group is made build a group cal model and save its id here
+
     // Getters and setters
-    public Long getId() {
-        return id;
+
+    public String getGroupCalId() {
+        return groupCalId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setGroupCalId(String groupCalId) {
+        this.groupCalId = groupCalId;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getTitle() {
         return title;
     }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getCode() {
         return code;
     }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
     public String getClassCode() {
         return classCode;
     }
-
-    public void setClassCode(String classCode) {
-        this.classCode = classCode;
-    }
-
     public String getCreatedBy() {
         return createdBy;
     }
+    public List<Integer> getMemberIds() {return memberIds;}
 
+    public void setId(Long id) {this.id = id;}
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    public void setCode(String code) {
+        this.code = code;
+    }
+    public void setClassCode(String classCode) {
+        this.classCode = classCode;
+    }
     public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
     }
+    public void setMemberIds(List<Integer> memberIds) {this.memberIds = memberIds;}
 
-    public List<String> getMemberEmails() {
-        return memberEmails;
-    }
-
-    public void setMemberEmails(List<String> memberEmails) {
-        this.memberEmails = memberEmails;
-    }
-
-    public boolean addMemberEmail(String email) {
-        if (!memberEmails.contains(email)) {
-            return memberEmails.add(email);
+    public boolean addMemberId(int userId) {
+        if (!memberIds.contains(userId)) {
+            return memberIds.add(userId);
         }
         return false;
     }
 
-    public boolean removeMemberEmail(String email) {
-        return memberEmails.remove(email);
-    }
-}
+    public boolean removeMemberId(int userId) {
+        return memberIds.remove((Integer)userId);
+    }}

@@ -8,38 +8,26 @@ public class GroupCal {
     private Long id;
     private String groupCode; // Code of the group this calendar belongs to
     private String calendarId; // Google Calendar ID
-    private List<Event> events; // List of events in this calendar
+    private String ownerEmail; // owner "owns" group cal
 
-    public GroupCal(Long id, String groupCode, String calendarId) {
+    public GroupCal(Long id, String groupCode, String calendarId, String ownerEmail) {
         this.id = id;
         this.groupCode = groupCode;
         this.calendarId = calendarId;
-        this.events = new ArrayList<>();
+        this.ownerEmail = ownerEmail;
     }
 
-    // Getters and setters
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public String getGroupCode() { return groupCode; }
+    public void setGroupCode(String groupCode) { this.groupCode = groupCode; }
 
-    public String getCalendarId() {
-        return calendarId;
-    }
+    public String getCalendarId() { return calendarId; }
+    public void setCalendarId(String calendarId) { this.calendarId = calendarId; }
 
-    public void setEvents(List<Event> events) {
-        this.events = events;
-    }
+    public String getOwnerEmail() { return ownerEmail; }
+    public void setOwnerEmail(String ownerEmail) { this.ownerEmail = ownerEmail;}
 
-    public void addEvent(Event event) {
-        this.events.add(event);
-    }
-
-    public boolean removeEvent(Event event) {
-        return this.events.remove(event);
-    }
 }
 

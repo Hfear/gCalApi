@@ -1,0 +1,33 @@
+/* myGroups.css */
+:root {
+    --color-sky:    #87CEEB;
+    --color-royal:  #4169E1;
+    --color-white:  #ffffff;
+    --color-gray:   #555555;
+}
+
+.mygroups-page {
+    background: var(--color-sky);
+    min-height: 100vh;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.page-title {
+    color: var(--color-white);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.empty-state {
+    color: var(--color-gray);
+    font-style: italic;
+    margin-top: 1rem;
+}
+
+.groups-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}

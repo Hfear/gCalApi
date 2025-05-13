@@ -1,12 +1,75 @@
 {
-  "groups": [
-    {
-      "id": 100,
-      "title": "Study Buddies",
-      "code": "SBUD",
-      "classCode": "CS101",
-      "createdBy": "alice@example.com",
-      "memberEmails": ["alice@example.com", "bob@example.com"]
-    }
-  ]
+  "groups" : [ {
+    "id" : 31,
+    "title" : "Hannahs Group",
+    "code" : "5C1BD1",
+    "classCode" : "PHYS101",
+    "createdBy" : "hannahbfearns@gmail.com",
+    "groupCalId" : "04ccd5c03799165e91254464b956fdca0655eed3944714a6d5fe5e154ce93301@group.calendar.google.com",
+    "memberIds" : [ 8, 7 ]
+  }, {
+    "id" : 32,
+    "title" : "Algorithms ",
+    "code" : "F48A07",
+    "classCode" : "undefined",
+    "createdBy" : "elasmarloay@gmail.com",
+    "groupCalId" : "6cefcd744eede9e7c95fda1e39b4041b71abb29a47f78f56cfc68c7abf079c8d@group.calendar.google.com",
+    "memberIds" : [ 7 ]
+  }, {
+    "id" : 30,
+    "title" : "Physics Lab Partners",
+    "code" : "GRP_PHYS_A",
+    "classCode" : "PHYS101",
+    "createdBy" : "charlie@example.com",
+    "groupCalId" : "04ccd5c03799165e91254464b956fdca0655eed3944714a6d5fe5e154ce93301@group.calendar.google.com",
+    "memberIds" : [ 1, 8, 7 ]
+  }, {
+    "id" : 10,
+    "title" : "Algorithms Study Group",
+    "code" : "GRP_CS1_A",
+    "classCode" : "CS101",
+    "createdBy" : "alice@example.com",
+    "groupCalId" : "null",
+    "memberIds" : [ 1, 2 ]
+  }, {
+    "id" : 11,
+    "title" : "CS101 Project Team",
+    "code" : "GRP_CS1_B",
+    "classCode" : "CS101",
+    "createdBy" : "bob@example.com",
+    "groupCalId" : "null",
+    "memberIds" : [ 3, 4 ]
+  }, {
+    "id" : 20,
+    "title" : "Calc I Homework Helpers",
+    "code" : "GRP_MATH_A",
+    "classCode" : "MATH101",
+    "createdBy" : "eve@example.com",
+    "groupCalId" : "null",
+    "memberIds" : [ 2, 5 ]
+  }, {
+    "id" : 21,
+    "title" : "Limits & Derivatives",
+    "code" : "GRP_MATH_B",
+    "classCode" : "MATH101",
+    "createdBy" : "frank@example.com",
+    "groupCalId" : "null",
+    "memberIds" : [ 6 ]
+  }, {
+    "id" : 22,
+    "title" : "Calc I Review Crew",
+    "code" : "GRP_MATH_C",
+    "classCode" : "MATH101",
+    "createdBy" : "alice@example.com",
+    "groupCalId" : "null",
+    "memberIds" : [ 2, 6 ]
+  }, {
+    "id" : 33,
+    "title" : "TheOne",
+    "code" : "11781F",
+    "classCode" : "undefined",
+    "createdBy" : "elasmarloay@gmail.com",
+    "groupCalId" : "844e8170753563b8cc4a436f621a53631c6ac347e96aa2b88184f9b9ebff491f@group.calendar.google.com",
+    "memberIds" : [ 7 ]
+  } ]
 }

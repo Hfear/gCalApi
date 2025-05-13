@@ -4,12 +4,15 @@ import Model.Group;
 import Model.User;
 import Service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
 
+
+//ROUTES FOR CLASS SPECIFIC GROUPS
 @RestController
 @RequestMapping("/class/{classCode}/groups")
 public class GroupControl {
@@ -17,6 +20,7 @@ public class GroupControl {
     @Autowired
     private GroupService groupService;
 
+    //groups for a specific class
     @GetMapping("/listgroups")
     public List<Group> listGroups(
             @PathVariable String classCode,
@@ -39,25 +43,23 @@ public class GroupControl {
         return groupService.createGroup(classCode, title, session);
     }
 
-    @PostMapping("/joingroup")
-    public boolean joinGroup(
+    @PostMapping("/group/{groupCode}/join")
+    public ResponseEntity<Void> joinGroup(
             @PathVariable String classCode,
-            @RequestBody Map<String, String> body,
+            @PathVariable String groupCode,
             HttpSession session
     ) {
-        String groupCode = body.get("groupCode");
-        System.out.println("Joining group: " + groupCode + " in class: " + classCode);
-        return groupService.joinGroup(groupCode, session);
+        boolean success = groupService.joinGroup(classCode, groupCode, session);
+        if (success) {
+            return ResponseEntity.ok().build();
+        } else {
+            // either group not found, wrong class, or already a member
+            return ResponseEntity.badRequest().build();
+        }
     }
 
-    @PostMapping("/leavegroup")
-    public boolean leaveGroup(
-            @PathVariable String classCode,
-            @RequestBody Map<String, String> body,
-            HttpSession session
-    ) {
-        String groupCode = body.get("groupCode");
-        System.out.println("Leaving group: " + groupCode + " in class: " + classCode);
+    @PostMapping("/group/{groupCode}/leave")
+    public boolean leaveGroup(@PathVariable String groupCode, HttpSession session) {
         return groupService.leaveGroup(groupCode, session);
     }
 
@@ -70,4 +72,15 @@ public class GroupControl {
         System.out.println("Listing members of group: " + groupCode);
         return groupService.getGroupMembers(groupCode);
     }
+
+    @GetMapping("/{groupCode}/details")
+    public Map<String, Object> getGroupDetails(
+            @PathVariable String classCode,
+            @PathVariable String groupCode
+    ) {
+        return groupService.getGroupDetails(groupCode);
+    }
+
+
+
 }

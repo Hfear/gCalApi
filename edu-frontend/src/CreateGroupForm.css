@@ -1,0 +1,67 @@
+:root {
+    --color-white:  #ffffff;
+    --color-royal:  #4169E1;
+    --color-gray:   #555555;
+    --spacing:      1rem;
+}
+
+.create-group-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(255,255,255,0.3);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.create-group-modal {
+    background: var(--color-white);
+    border-radius: 0.75rem;
+    padding: calc(var(--spacing) * 2);
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+}
+.create-group-modal h2 {
+    margin-top: 0;
+    color: var(--color-royal);
+}
+
+.create-group-modal label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--color-royal);
+    font-weight: 500;
+    text-align: left;
+}
+.create-group-modal input {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid var(--color-gray);
+    border-radius: 0.25rem;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+}
+
+.btn-filled {
+    width: 100%;
+    padding: 0.75rem;
+    background: var(--color-royal);
+    color: var(--color-white);
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+.btn-filled:hover {
+    background: #3658b3;
+}
+
+.error {
+    margin-top: 1rem;
+    color: red;
+}

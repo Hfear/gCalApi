@@ -12,7 +12,9 @@ import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import com.google.api.client.auth.oauth2.Credential;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Value;
@@ -88,11 +90,11 @@ public class AuthControl {
             //storing user in our temp Database file
             String userEmail = idToken.getPayload().getEmail();
             String userName = idToken.getPayload().get("name").toString();
-            User newUser = new User(0, userName, userEmail, null);
+            User newUser = new User(0, userName, userEmail);
             if (UserDatabase.getUser(userEmail) == null) {
                 UserDatabase.postUser(newUser);
                 UserDatabase.persistUser(newUser);
-                System.out.println("\n Saved Authenticated user: " + newUser.getName() + ", ID: " + newUser.getUserId() + userEmail + "\n");
+                System.out.println("\n Saved Authenticated user: " + newUser.getName() + ", ID+Email: " + newUser.getUserId() + userEmail + "\n");
             }
             else {
                 System.out.println("Returning user: " + userEmail);
@@ -135,6 +137,12 @@ public class AuthControl {
         String email = (String) session.getAttribute("userEmail");
         if (email == null) throw new RuntimeException("Not authenticated.");
         return UserDatabase.getUser(email).getUserId();
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<Void> logout(HttpSession session) {
+        session.invalidate();
+        return ResponseEntity.ok().build();
     }
 
 }

@@ -21,9 +21,8 @@ public class UserService {
         return UserDatabase.getUser(email);
     }
 
-    public Boolean enrollInClassroom(HttpSession session, String code) {
-
-        Classroom classroom = ClassroomDatabase.getClassroomByCode(code);
+    public Boolean enrollInClassroom(HttpSession session, String classCode) {
+        Classroom classroom = ClassroomDatabase.getClassroomByCode(classCode);
         if (classroom == null) {
             System.out.println("Classroom not found");
             return false;
@@ -35,19 +34,19 @@ public class UserService {
             return false;
         }
 
-        boolean enrolled = user.enroll(classroom);
+        boolean enrolled = user.enroll(classCode);
         if (enrolled) {
-            UserDatabase.persistUser(user); //since user changed updating file
-        }
-        else{
-            System.out.println("already enrolled");
+            classroom.addStudentId(user.getUserId());
+            ClassroomDatabase.persistAll();
+            UserDatabase.persistUser(user);
+        } else {
+            System.out.println("Already enrolled");
         }
         return enrolled;
-
     }
 
-    public boolean leaveClassroom(HttpSession session, String code) {
-        Classroom classroom = ClassroomDatabase.getClassroomByCode(code);
+    public boolean leaveClassroom(HttpSession session, String classCode) {
+        Classroom classroom = ClassroomDatabase.getClassroomByCode(classCode);
         if (classroom == null) {
             System.out.println("Classroom not found");
             return false;
@@ -59,16 +58,17 @@ public class UserService {
             return false;
         }
 
-        boolean removed = user.getEnrolledClasses().remove(classroom);
-
+        boolean removed = user.leaveClass(classCode);
         if (removed) {
+            classroom.removeStudentId(user.getUserId());
+            ClassroomDatabase.persistAll();
+            UserDatabase.persistUser(user);
             System.out.println("Classroom removed");
-            return true;
         } else {
-            System.out.println("Classroom not enrolled");
-            return true;
+            System.out.println("User was not enrolled in classroom");
         }
 
+        return removed;
     }
 
 }

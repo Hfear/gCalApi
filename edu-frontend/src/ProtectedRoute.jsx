@@ -13,7 +13,7 @@ export default function ProtectedRoute({children}) {
                 setIsAuth(data);
             } catch (error) {
                 console.error("Error checking authentication:", error);
-                setIsAuth(false); // Set false if there was an error
+                setIsAuth(false);
                 console.log("/isAuth is false");
             }
         };
@@ -23,11 +23,10 @@ export default function ProtectedRoute({children}) {
 
 
     if (isAuth === null) {
-        return <div>Loading...</div>;
+        return <div>Waiting on auth</div>;
     }
     else if (!isAuth)
     {
-        alert("you need to be authenticated");
         return <Navigate to="/SignIn" />;
     }
 

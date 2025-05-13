@@ -1,51 +1,49 @@
 import React, { useState } from 'react';
+import './JoinClass.css';
 
-const JoinClassForm = () => {
-    const [code, setCode] = useState('');
+export default function JoinClassModal({ onClose }) {
+    const [code,    setCode]    = useState('');
     const [message, setMessage] = useState('');
 
-    const handleJoin = async (e) => {
+    const handleJoin = async e => {
         e.preventDefault();
-
         try {
-            const response = await fetch('/join', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+            const res = await fetch('/join', {
+                method:      'POST',
+                headers:     { 'Content-Type': 'application/json' },
                 credentials: 'include',
-                body: JSON.stringify({ code }),
+                body:        JSON.stringify({ code }),
             });
-
-            const result = await response.json();
-
-            if(result)
-            {setMessage("joined sucessfully");}
-            else
-            {setMessage("could not join, or already joined");}
-
-        } catch (err) {
-            console.error(err);
-            setMessage("Server error");
+            const joined = await res.json();
+            setMessage(
+                joined
+                    ? 'Joined Successfully!'
+                    : 'Failed to Join .'
+            );
+        } catch {
+            setMessage('Server error.');
         }
     };
 
-
     return (
-        <form onSubmit={handleJoin}>
-            <label>
-                Class Code:
-                <input
-                    type="text"
-                    value={code}
-                    onChange={(e) => setCode(e.target.value)}
-                    required
-                />
-            </label>
-            <button type="submit">Join</button>
-            {message && <p>{message}</p>}
-        </form>
-    );
-};
+        <div className="join-modal-overlay" onClick={onClose}>
+            <div className="join-modal" onClick={e => e.stopPropagation()}>
+                <form onSubmit={handleJoin}>
+                    <label htmlFor="classCode">Enter Code:</label>
+                    <input
+                        id="classCode"
+                        type="text"
+                        value={code}
+                        onChange={e => setCode(e.target.value)}
+                        required
+                    />
 
-export default JoinClassForm;
+                    <button type="submit" className="btn-filled">
+                        Join
+                    </button>
+                    {message && <p className="message">{message}</p>}
+                </form>
+            </div>
+        </div>
+    );
+}

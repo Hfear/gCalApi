@@ -1,0 +1,47 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+.navbar-royal {
+    background-color: #4169E1 !important;
+}
+
+.navbar-royal .navbar-brand {
+    margin: 0 auto;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #fff !important;
+    padding: 0.5rem 0;
+}
+
+.navbar-royal .nav-link {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    color: #fff !important;
+    transition: color 0.2s;
+}
+.navbar-royal .nav-link:hover {
+    color: #e0e0e0 !important;
+}
+
+.navbar-bottom {
+    width: 100%;
+    height: 6px;
+    background-color: #5A8DEE;
+}
+
+.navbar-royal .nav-link.profile-icon {
+    padding: 0.5rem;
+    color: #fff !important;
+}
+.navbar-royal .nav-link.profile-icon:hover {
+    color: #e0e0e0 !important;
+}
+
+.navbar-royal .nav-link.profile-icon svg {
+    vertical-align: middle;
+    fill: currentColor;
+}

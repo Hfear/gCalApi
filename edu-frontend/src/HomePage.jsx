@@ -1,49 +1,105 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import JoinClassModal from './JoinClassForm';
+import CreateClassModal from './CreateClassForm';
+import './HomePage.css';
 
 export default function HomePage() {
-    const [events, setEvents] = useState(null)
+    const [showJoinModal,   setShowJoinModal]   = useState(false);
+    const [showCreateModal, setShowCreateModal] = useState(false);
+    const [events,          setEvents]          = useState([]);
 
     const fetchEvents = async () => {
         try {
             const res = await fetch('http://localhost:8080/events', {
-                method: 'GET',
-                credentials: 'include', // gets same session from back
+                method:      'GET',
+                credentials: 'include',
             });
             const text = await res.text();
-            console.log("fetched event from backend", text);
-            setEvents(text);
+            console.log('🔍 raw response:', text);
+
+            const lines = text
+                .split('\n')
+                .slice(1)
+                .filter(line => line.trim().length > 0);
+
+            const list = lines.map(line => {
+                const m = line.match(/^(.*) \((.*)\)$/);
+                return {
+                    summary: m ? m[1] : line,
+                    start:   { dateTime: m ? m[2] : '' },
+                };
+            });
+
+            console.log('✅ mapped events:', list);
+            setEvents(list);
         } catch (e) {
-            console.log("Error:", e.message);
+            console.error('Error fetching events:', e);
         }
     };
 
-
     return (
+        <>
 
-        <div style={{ padding: 20 }}>
+            <div
+                className={
+                    `homepage-container${(showJoinModal || showCreateModal) ? ' blur' : ''}`
+                }
+            >
 
-            <div>
-                <h1>Welcome to the Home Page!</h1>
+                <section className="welcome-card">
+
+                    <h1 className="card-title">Welcome to ED Group</h1>
+                    <p className="card-subtext">
+                        Organize, join, and collaborate with your class teams easily.
+                    </p>
+                    <div className="button-group">
+                        <button
+                            className="button-primary"
+                            onClick={() => setShowCreateModal(true)}
+                        >
+                            Create Class
+                        </button>
+                        <button
+                            className="button-outline"
+                            onClick={() => setShowJoinModal(true)}
+                        >
+                            Join Class
+                        </button>
+                    </div>
+                </section>
+
+
+                <section className="events-section">
+                    <h2>Calendar Events</h2>
+                    <button onClick={fetchEvents} className="button-small">
+                        Fetch Events
+                    </button>
+
+                    {events.length > 0 ? (
+                        <div className="events-list">
+                            {events.map(evt => (
+                                <div
+                                    className="event-item"
+                                    key={evt.summary + evt.start.dateTime}
+                                >
+                                    <h3>{evt.summary}</h3>
+                                    <p>{new Date(evt.start.dateTime).toLocaleString()}</p>
+                                </div>
+                            ))}
+                        </div>
+                    ) : (
+                        <p className="no-events">No events yet.</p>
+                    )}
+                </section>
             </div>
 
-            <Link to="/create-classform">
-                <button>Create Class</button>
-            </Link>
 
-            <Link to="/join-classform">
-                <button>Join Class</button>
-            </Link>
-
-            <h1>Calendar Events</h1>
-            <button onClick={fetchEvents}>
-                Fetch Events
-            </button>
-            {events && (
-                <pre style={{ whiteSpace: 'pre-wrap', marginTop: 20 }}>
-                    {events}
-                </pre>
+            {showJoinModal && (
+                <JoinClassModal onClose={() => setShowJoinModal(false)} />
             )}
-        </div>
-    )
+            {showCreateModal && (
+                <CreateClassModal onClose={() => setShowCreateModal(false)} />
+            )}
+        </>
+    );
 }

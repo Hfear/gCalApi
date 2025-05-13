@@ -1,45 +1,48 @@
 {
   "users" : [ {
-    "userId" : 1,
-    "name" : "Bob Johnson",
-    "email" : "bob.johnson@example.com",
-    "password" : "securePass!@#",
-    "enrolledClasses" : [ ]
+    "userId" : 0,
+    "name" : "Sam",
+    "email" : "sam@example.com",
+    "enrolledClassCodes" : [ "CS101", "PHYS101" ]
   }, {
-    "userId" : 3,
+    "userId" : 8,
     "name" : "Hannah F",
     "email" : "hannahbfearns@gmail.com",
-    "password" : "null",
-    "enrolledClasses" : [ {
-      "id" : 1003,
-      "title" : "Algebra I",
-      "description" : "High School Algebra",
-      "code" : "ALG1",
-      "createdBy" : "carol.williams@example.com"
-    } ]
-  }, {
-    "userId" : 0,
-    "name" : "Alice Smith",
-    "email" : "alice.smith@example.com",
-    "password" : "password123",
-    "enrolledClasses" : [ ]
+    "enrolledClassCodes" : [ "CS101", "ENG101", "6695D9", "CA2128", "80955F", "091C27", "908E47", "2BDEB2", "30D6A5", "897BA8", "93ED97", "MATH101", "C7FC77" ]
   }, {
     "userId" : 2,
-    "name" : "Carol Williams",
-    "email" : "carol.williams@example.com",
-    "password" : "letMeIn2025",
-    "enrolledClasses" : [ ]
+    "name" : "Mila",
+    "email" : "mila@example.com",
+    "enrolledClassCodes" : [ "PHYS101" ]
+  }, {
+    "userId" : 7,
+    "name" : "Loay Elasmar",
+    "email" : "elasmarloay@gmail.com",
+    "enrolledClassCodes" : [ "PHYS101", "C2AA0D", "MATH101", "997A2A", "ENG101" ]
+  }, {
+    "userId" : 1,
+    "name" : "Dany",
+    "email" : "dany@example.com",
+    "enrolledClassCodes" : [ "MATH101" ]
+  }, {
+    "userId" : 3,
+    "name" : "Leo",
+    "email" : "leo@example.com",
+    "enrolledClassCodes" : [ "CS101" ]
+  }, {
+    "userId" : 5,
+    "name" : "Alice",
+    "email" : "alice@example.com",
+    "enrolledClassCodes" : [ "MATH101", "ENG101" ]
+  }, {
+    "userId" : 6,
+    "name" : "Bob",
+    "email" : "bob@example.com",
+    "enrolledClassCodes" : [ "CS101" ]
   }, {
     "userId" : 4,
-    "name" : "andrew li",
-    "email" : "liandrew375@gmail.com",
-    "password" : null,
-    "enrolledClasses" : [ {
-      "id" : 1002,
-      "title" : "Computer Science 101",
-      "description" : "Intro to programming",
-      "code" : "CS101",
-      "createdBy" : "bob.johnson@example.com"
-    } ]
+    "name" : "Test",
+    "email" : "test@example.com",
+    "enrolledClassCodes" : [ "ENG101" ]
   } ]
 }

@@ -9,6 +9,7 @@ public class Classroom {
     private String code;
     private User createdBy;
     private List<String> groupCodes = new ArrayList<>();
+    private List<Integer> studentIds = new ArrayList<>();
 
     public Classroom(Long id, String title, String description, String code, User createdBy) {
         this.id = id;
@@ -25,6 +26,7 @@ public class Classroom {
     public String getCode() { return code; }
     public User getCreatedBy() { return createdBy; }
     public List<String> getGroupCodes() {return groupCodes;}
+    public List<Integer> getStudentIds() {return studentIds;}
 
     public void setId(Long id) { this.id = id; }
     public void setTitle(String title) { this.title = title; }
@@ -32,6 +34,7 @@ public class Classroom {
     public void setCode(String code) { this.code = code; }
     public void setCreatedBy(User createdBy) { this.createdBy = createdBy; }
     public void setGroupCodes(List<String> groupCodes) {this.groupCodes = groupCodes;}
+    public void setStudentIds(List<Integer> studentIds) {this.studentIds = studentIds;}
 
     public boolean addGroupCode(String groupCode) {
         if (!groupCodes.contains(groupCode)) {
@@ -42,6 +45,17 @@ public class Classroom {
 
     public boolean removeGroupCode(String groupCode) {
         return groupCodes.remove(groupCode);
+    }
+
+    public boolean addStudentId(int id) {
+        if (!studentIds.contains(id)) {
+            return studentIds.add(id);
+        }
+        return false;
+    }
+
+    public boolean removeStudentId(int id) {
+        return studentIds.remove((Integer) id);
     }
 
 }

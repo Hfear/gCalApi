@@ -1,7 +1,8 @@
 credentials.json
 tokens.json
 tokens/StoredCredential
-
+.idea/workspace.xml
+node_modules/
 
 # Ignore Gradle project-specific cache directory
 .gradle

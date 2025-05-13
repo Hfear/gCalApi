@@ -1,0 +1,108 @@
+:root {
+    --color-sky:    #87CEEB;
+    --color-royal:  #4169E1;
+    --color-white:  #ffffff;
+    --color-gray:   #555555;
+}
+
+.homepage-container {
+    min-height: 100vh;
+    background-color: var(--color-sky);
+    padding: 2rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: filter 0.3s ease;
+}
+.homepage-container.blur {
+    filter: blur(6px);
+}
+
+.welcome-card {
+    background: var(--color-white);
+    border-radius: 1rem;
+    padding: 2rem;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+.card-title {
+    margin: 0 0 0.5rem;
+    color: var(--color-royal);
+}
+.card-subtext {
+    margin: 0 0 1.5rem;
+    color: var(--color-gray);
+}
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+}
+.button-primary,
+.button-outline {
+    flex: 1;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+.button-primary {
+    background: var(--color-royal);
+    color: var(--color-white);
+    border: none;
+}
+.button-primary:hover {
+    background: #3658b3;
+}
+.button-outline {
+    background: transparent;
+    color: var(--color-royal);
+    border: 2px solid var(--color-royal);
+}
+.button-outline:hover {
+    background: var(--color-royal);
+    color: var(--color-white);
+}
+
+/* EVENTS SECTION */
+.events-section {
+    background: var(--color-white);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin-top: 2rem;
+}
+.events-section h2 {
+    margin-top: 0;
+    color: var(--color-royal);
+}
+.button-small {
+    background: var(--color-royal);
+    color: var(--color-white);
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.2s ease;
+}
+.button-small:hover {
+    background: #3658b3;
+}
+.events-list {
+    margin-top: 1rem;
+}
+.event-item + .event-item {
+    margin-top: 0.75rem;
+}
+.no-events {
+    color: var(--color-gray);
+    margin-top: 1rem;
+}
