@@ -23,11 +23,10 @@ export default function ProtectedRoute({children}) {
 
 
     if (isAuth === null) {
-        return <div>Loading...</div>;
+        return <div>Waiting on auth</div>;
     }
     else if (!isAuth)
     {
-        alert("you need to be authenticated");
         return <Navigate to="/SignIn" />;
     }
 

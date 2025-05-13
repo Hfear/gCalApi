@@ -1,10 +1,12 @@
 // MyGroups.jsx
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
-import GroupView from './GroupView';
+import GroupView from './GroupView'
+import {authCheck} from './authCheck.jsx';;
 import './myGroups.css';
 
 export async function loader() {
+    await authCheck();
     const res = await fetch('/my-groups', { credentials: 'include' });
     if (!res.ok) throw new Error('Failed to fetch groups');
     return res.json();

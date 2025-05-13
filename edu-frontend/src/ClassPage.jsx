@@ -2,10 +2,12 @@
 import React, { useState } from 'react';
 import { useLoaderData, useNavigate, useParams } from 'react-router-dom';
 import GroupView from './GroupView';
-import CreateGroupForm from './CreateGroupForm';    // ← modal form
+import CreateGroupForm from './CreateGroupForm';
+import {authCheck} from './authCheck.jsx';
 import './ClassPage.css';
 
 export async function loader({ params }) {
+    await authCheck();
     const { code } = params;
 
     // 1) fetch student IDs

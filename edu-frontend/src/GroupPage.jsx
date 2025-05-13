@@ -3,9 +3,11 @@ import { useLoaderData, useParams } from 'react-router-dom';
 import Loading from './Loading.jsx';
 import AddEventForm from './AddEventForm.jsx';
 import JoinGroupForm from './JoinGroupForm.jsx';
+import {authCheck} from './authCheck.jsx';
 import './GroupPage.css';
 
 export async function loader({ params }) {
+    await authCheck();
   const { classCode, groupCode } = params;
 
   // 1) Load group details

@@ -20,6 +20,7 @@ export default defineConfig({
       '/group': { target: 'http://localhost:8080', changeOrigin: true, secure: false },
       '/my-groups': { target: 'http://localhost:8080', changeOrigin: true, secure: false },
       '/calendar': { target: 'http://localhost:8080', changeOrigin: true, secure: false },
+      '/logout': { target: 'http://localhost:8080', changeOrigin: true, secure: false },
     },
   },
 })

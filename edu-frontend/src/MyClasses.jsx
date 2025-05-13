@@ -1,11 +1,13 @@
 // MyClasses.jsx
 import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import {authCheck} from './authCheck.jsx';
 import ClassView from './ClassView';
 import Loading from './Loading';
 import './myClasses.css';
 
 export async function loader() {
+    await authCheck();
     const res = await fetch('/my-classes', { credentials: 'include' });
     if (!res.ok) throw new Error('Failed to fetch classes');
     return await res.json();
