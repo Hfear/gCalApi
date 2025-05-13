@@ -41,21 +41,18 @@ public class ClassroomServiceTest {
         // Create and save user
         User user = new User(1, "TestUser", "testuser@example.com");
         user.setUserId(1);
-        user.enroll("Intro");  // Must match class code
+        user.enroll("Intro");
         UserDatabase.postUser(user);
         UserDatabase.persistUser(user);
 
-        // Create and save classroom (code = "Intro")
         Classroom classroom = new Classroom(1L, "Math", "MATH101", "Intro", user);
         classroom.addStudentId(user.getUserId());
         ClassroomDatabase.addClassroom(classroom);
         ClassroomDatabase.persistAll();
 
-        // Call method under test
         List<Integer> ids = new ClassroomService().getStudentIdsForClass("Intro");
         System.out.println("Student IDs: " + ids);
 
-        // Validate
         assertEquals(1, ids.size());
         assertEquals(0, ids.get(0));
     }

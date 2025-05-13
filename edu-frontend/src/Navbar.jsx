@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
-import { FaUserCircle } from 'react-icons/fa';      // ← import the icon
+import { FaUserCircle } from 'react-icons/fa';
 import './Navbar.css';
 
 export default function Navbar() {
@@ -33,11 +33,7 @@ export default function Navbar() {
                                     My Groups  |
                                 </Link>
                             </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/link">
-                                    Link  |
-                                </Link>
-                            </li>
+
                         </ul>
 
                         <ul className="navbar-nav ms-auto">

@@ -29,10 +29,8 @@ export default function CreateGroupForm({ onClose }) {
 
             const group = await res.json();
 
-            // your extra cleanup
             onClose();
 
-            // navigate afterwards
             navigate(`/class/${classCode}/group/${group.code}`);
         } catch (err) {
             console.error(err);

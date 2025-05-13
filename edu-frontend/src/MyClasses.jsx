@@ -1,4 +1,3 @@
-// MyClasses.jsx
 import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import {authCheck} from './authCheck.jsx';
@@ -14,10 +13,10 @@ export async function loader() {
 }
 
 export default function MyClasses() {
-    const classes = useLoaderData();               // from loader
-    const [created, setCreated] = useState([]);    // classes you made
-    const [joined, setJoined] = useState([]);      // classes you joined
-    const [loading, setLoading] = useState(true);  // profile + split logic
+    const classes = useLoaderData();
+    const [created, setCreated] = useState([]);
+    const [joined, setJoined] = useState([]);
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -59,7 +58,7 @@ export default function MyClasses() {
             <section>
                 <h2 className="section-title">Created Classes</h2>
                 {created.length === 0 ? (
-                    <p className="empty-state">You haven’t created any classes.</p>
+                    <p className="empty-state">No Classes Created.</p>
                 ) : (
                     <ul className="classes-list">
                         {created.map(c => (
@@ -72,7 +71,7 @@ export default function MyClasses() {
             <section>
                 <h2 className="section-title">Joined Classes</h2>
                 {joined.length === 0 ? (
-                    <p className="empty-state">You haven’t joined any classes.</p>
+                    <p className="empty-state">No Classes Joined.</p>
                 ) : (
                     <ul className="classes-list">
                         {joined.map(c => (

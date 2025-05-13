@@ -30,7 +30,7 @@ export default function CreateClassForm({ onClose }) {
             navigate(`/class/${newClass.code}`);     // then navigate
         } catch (err) {
             console.error(err);
-            setError(err.message || 'Could not create class. Try again.');
+            setError(err.message || 'Could not create class');
         }
     };
 

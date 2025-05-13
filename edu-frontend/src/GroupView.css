@@ -6,7 +6,6 @@
 
 }
 
-/* ─── CARD ─── */
 .group-item {
     background: var(--color-white);
     border-radius: 0.75rem;
@@ -19,14 +18,12 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-/* ─── LINK WRAPPER ─── */
 .group-link {
     display: block;
     padding: 1rem;
     text-decoration: none;
 }
 
-/* ─── CONTENT ─── */
 .group-item__content {
     color: var(--color-blue);
     font-size: 1.1rem;

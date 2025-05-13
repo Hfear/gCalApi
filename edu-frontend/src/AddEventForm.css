@@ -5,12 +5,10 @@
     --spacing:      1rem;
 }
 
-/* BLUR UTILITY (if not already) */
 .blur {
     filter: blur(6px);
 }
 
-/* OVERLAY */
 .ae-overlay {
     position: fixed;
     inset: 0;
@@ -22,7 +20,6 @@
     z-index: 999;
 }
 
-/* MODAL */
 .ae-modal {
     background: var(--color-white);
     border-radius: 0.75rem;
@@ -33,7 +30,6 @@
     text-align: center;
 }
 
-/* FORM */
 .ae-form {
     display: flex;
     flex-direction: column;
@@ -56,7 +52,6 @@
     resize: vertical;
 }
 
-/* BUTTON */
 .btn-filled {
     margin-top: var(--spacing);
     padding: 0.75rem;
@@ -72,7 +67,6 @@
     background: #3658b3;
 }
 
-/* ERROR */
 .error {
     margin-top: var(--spacing);
     color: red;

@@ -1,4 +1,3 @@
-// MyGroups.jsx
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import GroupView from './GroupView'

@@ -5,7 +5,6 @@
     --color-gray:   #555555;
 }
 
-/* ── OVERLAY ── */
 .join-modal-overlay {
     position: fixed;
     inset: 0;
@@ -17,7 +16,6 @@
     z-index: 999;
 }
 
-/* ── MODAL CARD ── */
 .join-modal {
     background: var(--color-white);
     border: 2px solid var(--color-royal);
@@ -28,7 +26,6 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* ── FORM ── */
 .join-modal label {
     display: block;
     margin-bottom: 0.5rem;
@@ -45,7 +42,6 @@
     box-sizing: border-box;
 }
 
-/* ── BUTTON ── */
 .btn-filled {
     width: 100%;
     padding: 0.75rem;
@@ -57,7 +53,6 @@
     font-weight: 500;
 }
 
-/* ── MESSAGE ── */
 .message {
     margin-top: 1rem;
     color: var(--color-royal);

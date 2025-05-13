@@ -13,7 +13,7 @@ export default function ProtectedRoute({children}) {
                 setIsAuth(data);
             } catch (error) {
                 console.error("Error checking authentication:", error);
-                setIsAuth(false); // Set false if there was an error
+                setIsAuth(false);
                 console.log("/isAuth is false");
             }
         };

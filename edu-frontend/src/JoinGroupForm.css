@@ -5,7 +5,6 @@
     --color-gray:  #555;
 }
 
-/* blur + backdrop */
 .join-group-overlay {
     position: fixed;
     inset: 0;
@@ -17,7 +16,6 @@
     z-index: 999;
 }
 
-/* modal box */
 .join-group-modal {
     background: var(--color-white);
     border-radius: 0.75rem;
@@ -28,13 +26,11 @@
     text-align: center;
 }
 
-/* heading */
 .join-group-modal h2 {
     margin-top: 0;
     color: var(--color-royal);
 }
 
-/* form buttons */
 .btn-filled {
     width: 100%;
     padding: 0.75rem;
@@ -58,7 +54,6 @@
     cursor: pointer;
 }
 
-/* error text */
 .error {
     margin-top: 1rem;
     color: red;

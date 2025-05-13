@@ -17,7 +17,7 @@ body, html {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: #87CEEB; /* sky-blue */
+    background-color: #87CEEB;
 }
 
 .logo-title {

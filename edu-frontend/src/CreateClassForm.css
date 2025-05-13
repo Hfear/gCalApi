@@ -1,11 +1,10 @@
 :root {
-    --color-sky:    #87CEEB;   /* sky blue */
-    --color-royal:  #4169E1;   /* royal blue */
+    --color-sky:    #87CEEB;
+    --color-royal:  #4169E1;
     --color-white:  #ffffff;
     --color-gray:   #555555;
 }
 
-/* ── OVERLAY ── */
 .create-modal-overlay {
     position: fixed;
     inset: 0;
@@ -17,7 +16,6 @@
     z-index: 999;
 }
 
-/* ── MODAL CARD ── */
 .create-modal {
     background: var(--color-white);
     border: 2px solid var(--color-royal);
@@ -29,13 +27,11 @@
     text-align: center;
 }
 
-/* ── HEADER ── */
 .create-modal h2 {
     margin: 0 0 1rem;
     color: var(--color-royal);
 }
 
-/* ── FORM CONTROLS ── */
 .create-modal label {
     display: block;
     margin-bottom: 0.5rem;
@@ -52,7 +48,6 @@
     box-sizing: border-box;
 }
 
-/* ── SUBMIT BUTTON ── */
 .btn-filled {
     width: 100%;
     padding: 0.75rem;
@@ -68,7 +63,6 @@
     background: #3658b3;
 }
 
-/* ── FEEDBACK MESSAGE ── */
 .message {
     margin-top: 1rem;
     color: var(--color-royal);

@@ -7,7 +7,6 @@
     --spacing:       1rem;
 }
 
-/* PAGE WRAPPER */
 .class-page {
     background: var(--color-sky);
     min-height: 100vh;
@@ -16,7 +15,6 @@
     font-family: 'Poppins', sans-serif;
 }
 
-/* HEADER */
 .class-header {
     background: var(--color-royal);
     color: var(--color-white);
@@ -41,7 +39,6 @@
     font-size: 1.1rem;
 }
 
-/* CREATE GROUP BUTTON */
 .class-actions {
     text-align: right;
     margin-bottom: var(--spacing);
@@ -56,7 +53,6 @@
     cursor: pointer;
 }
 
-/* GROUPS TITLE (outside white box) */
 .groups-title {
     margin: 0 0 var(--spacing) var(--spacing);
     color: var(--color-royal);
@@ -64,13 +60,11 @@
     font-weight: 600;
 }
 
-/* MAIN LAYOUT */
 .class-content {
     display: flex;
     gap: var(--spacing);
 }
 
-/* GROUPS PANEL */
 .groups-panel {
     flex: 2;
     background: var(--color-white);
@@ -84,7 +78,6 @@
     padding: 0;
 }
 
-/* STUDENTS PANEL */
 .students-panel {
     flex: 1;
     background: var(--color-white);
@@ -106,12 +99,9 @@
     color: var(--color-text);
 }
 
-/* BLUR UTILITY */
 .blur {
     filter: blur(6px);
 }
-
-/* ClassPage.css (append at bottom) */
 
 .btn-join-group {
     background: var(--color-royal);
@@ -126,4 +116,22 @@
 
 .btn-join-group:hover {
     background: #3658b3;
+}
+
+.students-list li {
+    position: relative;
+    padding-left: 1.2rem;
+    color: var(--color-text);
+}
+
+.students-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0.5rem;
+    height: 0.5rem;
+    background: var(--color-royal);
+    border-radius: 50%;
 }
